@@ -11,6 +11,7 @@ Table of contents
   * [C#](#6-c#)
   * [.NET Core](#7-.net-core)
   * [Machine Learning](#8-machine-learning)
+  * [Python](#9-python)
   
   
 ## 1. Dart
@@ -57,3 +58,7 @@ https://www.youtube.com/watch?v=eCbaZixsP-s
 https://profs.info.uaic.ro/~ciortuz/ML.ex-book/editia-2021/ex-book.28sept2021.pdf
 
 https://profs.info.uaic.ro/~ciortuz/ML.ex-book/SLIDES/
+
+
+## 9. Python
+https://sites.google.com/site/fiipythonprogramming
