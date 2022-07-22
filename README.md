@@ -4,7 +4,7 @@ Table of contents
 =================
   * [Dart](#1-dart)
   * [Flutter](#2-flutter)
-  * Angular(#3-angular)
+  * [Angular](#3-angular)
   * [Firebase](#4-firebase)
   * [Firestore](#5-firestore)
   * [C#](#6-c#)
