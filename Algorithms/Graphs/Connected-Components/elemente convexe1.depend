@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1511887012 source:d:\maria\algoritmi elementari\grafuri\elemente convexe1\main.cpp
+	<fstream>
+
+1604620523 source:f:\algoritmi elementari\grafuri\componente conexe\main.cpp
+	<iostream>
+

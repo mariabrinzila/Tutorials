@@ -1,0 +1,20 @@
+# depslib dependency file v1.0
+1510170005 source:d:\maria\info\divide et impera\triunghiul lui sierpinski\main.cpp
+	<iostream>
+	"graphics2.h"
+
+1370617480 d:\maria\info\divide et impera\triunghiul lui sierpinski\graphics2.h
+
+1370617512 source:d:\maria\info\divide et impera\triunghiul lui sierpinski\winbgi2.cpp
+	<windows.h>
+	<stddef.h>
+	<stdio.h>
+	<math.h>
+	"graphics2.h"
+
+1510173605 source:d:\maria\algoritmi elementari\divide et impera\triunghiul lui sierpinski\main.cpp
+	<iostream>
+	"graphics2.h"
+
+1370621080 d:\maria\algoritmi elementari\divide et impera\triunghiul lui sierpinski\graphics2.h
+

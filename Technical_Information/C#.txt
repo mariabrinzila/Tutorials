@@ -1,0 +1,458 @@
+- class based like Java
+
+- case sensitive language (for example number and Number are different)
+
+- static void Main(string[] args) {} <=> main method that executes in the program
+
+
+
+Namespaces:
+	- collection of one or more classes
+	- like libraries
+
+	- using namespace_name; <=> add a namepace in the program (for example using System;)
+
+	- Console functions <=> in the System namespace 
+
+	- Console.WriteLine("Hello World!"); <=> writes Hello World! in the console
+	- Console.WriteLie("{0} {1}", byte.MinValue, byte.MaxValue); <=> the string is like a template and will display the given arguments (0 <=> byte.MinValue and 1 <=> byte.MaxValue so it'll display 0 255 in the console)
+
+	- Console.ReadLine() <=> get input from the user (as a string) 
+
+
+
+Identifiers: 
+	- can't start with a number
+	- can't contain white spaces
+	- can't be a reserved keyword (for example int <=> you can use @int, if you want)
+
+
+
+Variables and constants:
+	- type var_name; <=> variable declaration
+
+	- variables can't be used unless they're initialized
+
+	- const type var_name = value; <=> constant declaration
+
+	- constants must be initialized when declared
+
+	- real numbers <=> double is the compiler default (for example float <=> float nr = 1.2f; and decimal <=> decimal nr = 1.2m;)
+	- f and m are suffixes that tell the compiler that number is a float / decimal (if you don't add them, the compiler will think the number is a double and then you'll have a compilation error since float / decimal can't be converted to double)
+
+	- char <=> between ''
+	- string <=> between ""
+
+	- var <=> the compiler detects / inferrs the data type (for example var number = 2; will be assumed as an int by the compiler)
+
+
+
+Overflowing:
+	- when we exceed the maximum range for a data type <=> a value is either too big or too small for a data type (for example byte stores 0... 255, so byte nr = 255; nr = nr + 1; will make nr 0 as it overflows)
+
+	- no default overflowing checking
+
+	- checked keyword <=> prevents overflowing 
+		checked { 
+			byte nr = 255; nr = nr + 1; 
+		} // an exception will be thrown
+
+
+
+Type Conversions:
+	- implicit <=> from byte to int, from int to float etc. (for example int i = 1; float f = i;)
+
+	- data loss <=> when we want to store data in a structure that doesn't allow it (for example int i = 300; byte b = i;)
+	- if the compiler thinks there may be data loss, it doesn't allow implicit conversion
+
+	- type var_name1 = (conversion_type) var_name2; <=> explicit (casting) (for example int i = 1; byte b = (byte) i;)
+
+	- you can't use explicit casting, if the types aren't compatible (for example string and int) <=> Convert or Parse can be used (for example string s = "1"; int i = Convert.ToInt32(s); int j = int.Parse(s);)
+	- if the source type can't be converted to the target type due to overflowing, an exception will be thrown
+
+
+
+Operators:
+	- arithmetic <=> +, -, *, /, %, ++, --
+
+	- postfix incrementation (for example a++) <=> first the assignment and then the incrementation (for example int a = 1; int b = a++; <=> b = 1 and then a = 2)
+	- prefix incrementation (for example ++a) <=> first the incrementation and then the assignment (for example int a = 1; int b = ++a; <=> b = 2 and then a = 2)
+	- prefix and postfix decrementation (a-- or --a for example)
+
+	- operations between integers and decimal numbers (float, double or decimal) give out a decimal number (for example 5 + 8.11 = 13.11)
+	- if you want the result of a division to be a float, you need to cast at least one of the integers to float
+
+	- comparison <=> ==, !=, >, >=, <, <=
+
+	- assignment <=> =, +=, -=, *=, /=
+
+	- logical <=> &&, ||, !
+
+	- bitwise <=> &, |
+
+
+
+Strings:
+	- + operator <=> concatenation (for example "UAIC" + " Faculty")
+
+	- stringName.Length <=> returns the number of characters in stringName
+ 
+	- stringName.ToUpper(), stringName.ToLower() <=> returns stringName with all characters converted to upper/lower case characters
+
+	- stringName.Contains(string value) <=> returns true, if stringName contains the value string and false, otherwise
+	- stringName.IndexOf(string / char value) <=> if stringName contains value, it returns the first index where value can be found and otherwise, it returns -1
+
+	- stringName.Substring(int index) <=> returns the substring starting at the index postion
+	- stringName.Substring(int index, int nrCharacters) <=> returns the substring starting at the index postion and having nrCharacters characters
+
+	- stringName[index] <=> returns the character on the index position in stringName
+	- the first position in a string is 0 (for example stringName[0] is the first character in stringName)
+
+
+
+Arrays:
+	- type[] arrayName = {value1, value2, ..., valueN}; (for example int[] nr = {1, 2, 3};)
+
+	- type[] arrayName = new type[nrArrayElements]; (for example string[] friends = new string[4]; <=> friends has 4 elements but it's empty)
+	
+	- arrayName[index] <=> returns the value in the array on the index position
+
+	- the first position in an array is 0 (for example arrayName[0] is the first value in arrayName)
+
+	- arrayName[index] = newValue <=> assigns newValue to the value at the index position
+
+
+
+Matrices:
+	- 2D arrays
+
+	- type[,] matrixName = {{value11, value12, ..., value1N}, {value21, value22, ..., value2N}, ..., {valueM1, valueM2, ..., valueMN}}; (for example int[,] numbers = {{1, 2}, {3, 4}, {5, 6}})
+
+	- type[,] matrixName = new type[nrRows, nrColumns]; <=> empty matrix with nrRows rows and nrColumns columns (for example int[,] a = new int[2, 3] is an empty matrix with 2 rows and 3 columns)
+
+	- each element in matrixName is in itself an array
+
+	- matrixName[indexRow][indexColumn] <=> returns the element in the matrix on the indexRow row and indexColumn column (for example number[1][1] is 4)
+
+
+
+Methods:
+	- block of code to perform a certain task
+	- only the code in the Main method will run automatically when we start the programe, the other methods must be called in order to run
+
+	- *static* returnType methodName (*type parameter1, type parameter2, ..., type parameterN*) { // method block } <=> we use static if the method is alongside the Main method 
+		static void SayHi() { 
+			Console.WriteLine("Hello user"); 
+		}
+
+	- methodName(*parameter_1, parameter_2, ..., parameter_n*); <=> calling a method (for example SayHi();)
+
+	- if a method has a return type, there must be a return statement at the end of the method block 
+
+	- return informationToBeReturned <=> return statement, informationToBeReturned must have the same type as the method's return type or a type that can be converted to it 
+		static double cube(int num) {
+			int result = num * num * num; return result; 
+		}
+
+
+
+Math Methods:
+	- in the System.Math namespace
+	- most of the mathematical functions that we may need
+
+	- Math.Abs(val) <=> returns the absolute value of val
+
+	- Math.Pow(value1, value2) <=> returns value1 raised to the value2 power (value1 ^ value2)
+
+	- Math.Sqrt(value) <=> returns the square root of value
+
+	- Math.Max(value1, value2) <=> returns the maximum value out of value1 and value2
+	- Math.Min(value1, value2) <=> returns the minimum value out of value1 and value2
+
+	- Math.Round(val) <=> returns the rounded value of val
+
+
+
+If:
+	- if (condition) { // condition is true action } else { // condition is false action } 
+		bool isMale = true;
+ 
+		if (isMale) { 
+			Console.WriteLine("You're a male"); 
+		}
+
+	- condition must be a true / false value 
+	- condition can be made up of multiple conditions joined by logical operators (for example (isMale && isTall))
+	- condition can be used for comparisons (for example (num1 > num2))
+
+	- if (condition) { // condition is true action } else if (condition2) { // condition is false and condition2 is true action } 
+		if (isMale && isTall) {
+			Console.WriteLine("Something"); 
+		} else if (isMale && !isTall) {
+			Console.WriteLine("Something else"); 
+		} else { 
+			Console.WriteLine("Another something else"); 
+		}
+
+	- we can have multiple else ifs and only one else
+
+
+
+Switch:
+	- switch (value) { case value1: // actionBlock case value2: // actionBlock ... case valueN: // actionBlock default: // actionBlock } 
+		switch(dayNum) {
+			case 0: dayName = "Sunday"; break;
+			case 1: dayName = "Monday"; break;
+			case 2: dayName = "Tuesday"; break;
+			default: dayName = "Invalid"; break; 
+		}
+
+	- without break in a case, if the value coresponds to the case value, it won't stop and will keep checking the rest of the values
+
+	- default is for the case when the value doesn't correspond to any of the case values (for example dayNum = 3)
+
+
+
+Loops:
+	- while (condition) { // action block to do while the condition is true } 
+		int i = 1; 
+
+		while (i <= 5) {
+			Console.WriteLine(i); i++; 
+		}
+
+	- do { // action block to do while the condition is true } while (condition); 
+		int i = 1;
+
+		do {
+			Console.WriteLine(i); i++; 
+		} while (i <= 5);
+
+	- the difference between while and do ... while is that while first checks the condition and then does everything in the action block and do ... while first does everything in the action block and then checks the condition (for example if i = 6, the while doesn't print anything and do ... while prints 6) 
+
+	- for (initialization; condition; change) { // action block if the condition is true }  
+		for (int i = 1; i <= 5; i++) { 
+			Console.WriteLine(i); 
+		}
+
+	- initialization <=> initial value 
+	- change <=> incrementation / decrementation, the changes to the value (for example i += 2, i--, i *= 10 etc.)
+
+
+
+Classes and objects:
+	- class <=> blueprint for a new data type that we define
+
+	- every class has class attributes <=> data that describes that new data type that we created (for example the Book class will have the attributes public string title, public string author and public int pages)
+
+	- object <=> an instance of a class 
+
+	- class className { // class block } 
+		class Book { 
+			public string title; public string author; public int pages; 
+		}
+
+	- className objectName = new className(); <=> create an object of className (for example Book b = new Book();)
+
+	- objectName.attributeName = value; <=> give an object attribute a value (for example b1.title = "Harry Potter";)
+
+
+
+Constructors:
+	- special methods in a class that will get called every time an object of that class is made
+	
+	- public / private className(*parameters*) { // constructor block } (for example public Book() {} which is the implicit constructor)
+
+	- using constructors, we can assign values to an object's attributes easier 
+		public Book(string aTitle, string aAuthor, int aPages) {
+			title = aTitle; author = aAuthor; pages = aPages; 
+		}
+		
+		Book b1 = new Book("title", "author", 100);
+
+	- there can be multiple constructors in a class
+
+
+
+Object methods:
+	- methods in a class that objects have access to (can define different "rules" for class objects)
+
+	- public / private returnType methodName(*parameters*) { // method block } 
+		public bool hasLotsOfPages() {
+			if (pages >= 500) { return true; }
+			return false; 
+		}
+
+		Console.WriteLine(book1.hasLotsOfPages());
+
+	- there can be multiple object methods in a class
+	- all the rules etc. that apply for methods do so for ojbect methods as well 
+
+
+
+Getters and setters:
+	- 2 types of methods in a class that allows us to control the access to the class's attributes (properties)
+
+	- public <=> anyone can access the attribute / method (any object, code etc.)
+	- private <=> only the code in the class can access the attribute / method 
+		class Movie { 
+			public string title; private string rating; 
+		} // title can be accessed by everyone but rating can only be accessed in the Movie class
+
+	- public / private returnType propertyName { get { // get block } set { // set block }}  
+		public Movie(string aTitle, string aRating) {
+			title = aTitle; Rating = aRating; 
+		}
+
+		public string Rating { 
+			get { return rating; }
+
+			set { 
+				if (value == "G" || value == "PG") rating = value;
+				else rating = "NR"; 
+			}
+		}
+
+		Movie avengers = new Movie("Avengers", "Dog");
+		Console.WriteLine(avengers.Rating); // NR
+
+		avengers.Rating = "PG";
+		Console.WriteLine(avengers.Rating); // PG
+
+	- propertyName should ideally be the attribute's name but with a capital letter
+
+	- value <=> the input value that is a candidate for the attribute
+
+
+
+Static:
+	- static attribute <=> an attribute that is contained in the class itself and not on an individual object of that class (attribute of a class, not of an object)
+
+	- public / private static type attributeName; className.attributeName 
+		class Song { 
+			public string title; public static int songCount = 0; 
+			
+			public Song(string aTitle) {
+				title = aTitle; songCount++; 
+			}
+		}
+
+		Console.WriteLine(Song.songCount); // 0
+
+		Song s1 = new Song("Holiday"); 
+		Song s2 = new Song("Kashmir");
+
+		Console.WriteLine(Song.songCount); // 2
+		Console.WriteLine(s2.songCount); // error
+
+	- an object can get the information from a static attribute using a method in that class that returns it 
+		public int getCount() { 
+			return songCount; 
+		}
+
+		Console.WriteLine(s1.getCount()); 
+
+	- static method <=> a method that is contained in the class itself and not on an individual object of that class (method of a class, not of an object)
+
+	- public / private static returnType methodName (*parameters*) { // method block } className.methodName(*parameters*); 
+		public static void SayHi(string name) {
+			Console.WriteLine("Hello " + name); 
+		}
+		
+		Song.SayHi("Mike");
+
+	- static class <=> we can't instantiate it (create objects / instances), we can only use its public static attributes, methods and properties (for example the Math class <=> Math obj = new Math(); throws an error but Console.WriteLine(Math.sqrt(144); will write 12 in the console, sqrt is a static method)
+
+	- static class className { // class block } 
+		static class Test { 
+			public int nr = 0; 
+		}
+
+
+
+Inheritance:
+	- have a class (subclass) inherit all the functionalities, attributes etc. from another class (superclass)
+
+	- class subclassName : superclassName { // subclass block } 
+		class Chef {
+			public void MakeChicken() { 
+				Console.WriteLine("A"); 
+			}
+
+			public void MakeSalad() { 
+				Console.WriteLine("B"); 
+			}
+		}
+
+		class ItalianChef : Chef {
+			public void MakePasta() { 
+				Console.WriteLine("C"); 
+			}
+		}
+
+		ItalianChef i = new ItalianChef(); i.MakeChicken(); // A
+		i.MakePasta(); // C
+
+	- virtual method <=> a class's method that can be overriden in any of its subclasses 
+		class Chef {
+			public virtual void MakeSpecialDish() {
+				Console.WriteLine("D"); 
+			}
+		}
+
+		class ItalianChef : Chef {
+			public override void MakeSpecialDish() {
+				Console.WriteLine("E"); 
+			}
+		}
+
+		Chef c = new Chef(); Console.WriteLine(c.MakeSpecialDish()); // D
+		ItalianChef i = new ItalianChef(); Console.WriteLine(i.MakeSpecialDish()); // E
+
+	- in the subclass, the virtual method will have override instead of virtual (virtual methods can be overriden, it's not a must)
+
+
+
+Exceptions:
+	- try { // code that might throw an exception } catch { // an exception being thrown }
+
+	- try { // code that might throw an exception } catch { // an exception being thrown } finally { // code that will be executed no matter what } <=> the finally block will be executed regardless if we caught an exception or not
+
+	- try { // code that might throw an exception } catch (Exception e) { // an exception being thrown }
+		try { 
+			Console.WriteLine(5 / 0); 
+		} catch (Exception e) { 
+			Console.WriteLine(e.Message); 
+		} // will print out Attempted to divide by zero.
+
+	- if we want to do different things in case of different exceptions, we can put a specific exception in the catch clause and thus, the code in the block will only execute in case of that exception and not in case of other exceptions that may occur 
+		try { 
+			Console.Write("Enter a number: "); 
+			int n1 = Convert.ToInt32(Console.ReadLine());
+
+			Console.Write("Enter a number: "); 
+			int n2 = Convert.ToInt32(Console.ReadLine());
+
+			Console.WriteLine(n1 / n2); 
+		} catch (DivideByZeroException e) { 
+			Console.WriteLine(e.Message); 
+		} /*  will only catch e and print the exception message in case of DivideByZeroException and not if for example the input from the user is not a number and can't be converted) */
+	
+	- there can be multiple catch blocks (for example try { ... } catch (Exception e1) { ... } catch (Exception e2) { ... })
+
+
+
+Comments:
+	- single-line <=> // comment
+	- multi-line <=> /* multiple lines */
+
+
+
+Naming conventions:
+	- variables <=> Camel Case (for example firstName)
+
+	- constants <=> Pascal Case (for example FirstName)
+
+	- methods <=> Pascal Case (for example SayHi)
+
+	- classes <=> Pascal Case (for example Book)

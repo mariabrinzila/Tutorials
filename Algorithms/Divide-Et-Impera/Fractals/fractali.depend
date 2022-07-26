@@ -1,0 +1,22 @@
+# depslib dependency file v1.0
+1510071481 source:d:\maria\info\divide et impera\fractali\main.cpp
+	<iostream>
+	"graphics2.h"
+	<cstring>
+
+1370617480 d:\maria\info\divide et impera\fractali\graphics2.h
+
+1370617512 source:d:\maria\info\divide et impera\fractali\winbgi2.cpp
+	<windows.h>
+	<stddef.h>
+	<stdio.h>
+	<math.h>
+	"graphics2.h"
+
+1510075413 source:d:\maria\algoritmi elementari\divide et impera\fractali\main.cpp
+	<iostream>
+	"graphics2.h"
+	<cstring>
+
+1370621080 d:\maria\algoritmi elementari\divide et impera\fractali\graphics2.h
+
