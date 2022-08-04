@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Two-Sum.iml" filepath="$PROJECT_DIR$/.idea/Two-Sum.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Linked-Lists.iml" filepath="$PROJECT_DIR$/.idea/Linked-Lists.iml" />
     </modules>
   </component>
 </project>
