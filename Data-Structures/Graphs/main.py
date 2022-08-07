@@ -68,6 +68,56 @@ class UndirectedGraph:
 
         return traversal_result
 
+    def dfs_list(self, start_vertex):
+        """
+        :param start_vertex: the vertex from which the traversal of the graph starts
+        :return: the array containing the traversal result of the graph
+        """
+        visited_vertices = [start_vertex]
+        self.backtracking(start_vertex, visited_vertices)
+
+        return visited_vertices
+
+    def backtracking(self, current_vertex, visited):
+        """
+        :param current_vertex: the vertex which will have its neighbours traversed
+        :param visited: the array of visited vertices
+        :return: void
+        """
+        if self.list[current_vertex] is not None:
+            for neighbour in self.list[current_vertex]:
+                if neighbour not in visited:
+                    visited.append(neighbour)
+                    self.backtracking(neighbour, visited)
+
+    def cycles_matrix(self):
+        """
+        :return: true, if the graph has cycles and false, otherwise
+        """
+        traversed_vertices = []
+
+        for i in range(self.v):
+            visited_vertices = []
+
+            if self.dfs_modified(i, visited_vertices, traversed_vertices):
+                return True
+
+        return False
+
+    def dfs_modified(self, vertex, visited, traversed):
+        visited.append(vertex)
+        traversed.append(vertex)
+
+        for i in range(self.v):
+            if self.matrix[vertex][i] == 1 and i not in visited:
+                if i in traversed:
+                    return True
+
+                if self.dfs_modified(i, visited, traversed):
+                    return True
+
+        return False
+
     def print_matrix(self):
         """
         :return: void (but prints the adjacency matrix)
@@ -133,12 +183,33 @@ class DirectedGraph:
             traversal_result += str(current) + " "
 
             if self.list[current] is not None:
-                for element in self.list[current]:
-                    if element not in visited_vertices:
-                        queue.append(element)
-                        visited_vertices.append(element)
+                for neighbour in self.list[current]:
+                    if neighbour not in visited_vertices:
+                        queue.append(neighbour)
+                        visited_vertices.append(neighbour)
 
         return traversal_result
+
+    def dfs_matrix(self, start_vertex):
+        """
+        :param start_vertex: the vertex from which the traversal of the graph starts
+        :return: the array containing the traversal result of the graph
+        """
+        visited_vertices = [start_vertex]
+        self.backtracking(start_vertex, visited_vertices)
+
+        return visited_vertices
+
+    def backtracking(self, current_vertex, visited):
+        """
+        :param current_vertex: the vertex which will have its neighbours traversed
+        :param visited:
+        :return: the array of visited vertices
+        """
+        for i in range(self.v):
+            if self.matrix[current_vertex][i] == 1 and i not in visited:
+                visited.append(i)
+                self.backtracking(i, visited)
 
     def print_matrix(self):
         """
@@ -155,6 +226,9 @@ class DirectedGraph:
 
 v = 5
 edges = {(0, 1), (0, 4), (1, 2), (1, 3), (1, 4), (2, 3), (3, 4)}
+
+v = 4
+edges = {(0, 1), (1, 2), (2, 3)}
 
 v1 = 6
 edges1 = {(0, 1), (0, 2), (1, 3), (1, 4), (2, 4), (3, 4), (3, 5), (4, 5)}
@@ -176,7 +250,21 @@ print(undirected_graph.list)
 print("---------------------------------------")
 
 # BFS (matrix)
-print(undirected_graph.bfs_matrix(3))
+print(undirected_graph.bfs_matrix(0))
+print("---------------------------------------")
+
+# DFS (list)
+print("List DFS result is: ")
+print(undirected_graph.dfs_list(0))
+print("---------------------------------------")
+
+# Cycles (list)
+cycles = undirected_graph.cycles_matrix()
+
+if cycles:
+    print("The graph has cycles")
+else:
+    print("The graph is acyclic")
 print("---------------------------------------")
 
 # Directed graph
@@ -197,4 +285,9 @@ print("---------------------------------------")
 
 # BFS (list)
 print(directed_graph.bfs_list(0))
+print("---------------------------------------")
+
+# DFS (matrix)
+print("Matrix DFS result is: ")
+print(directed_graph.dfs_matrix(0))
 print("---------------------------------------")
