@@ -1,4 +1,5 @@
 import numpy as np
+from random import randrange
 
 
 class UndirectedGraph:
@@ -48,25 +49,23 @@ class UndirectedGraph:
     def bfs_matrix(self, start_vertex):
         """
         :param start_vertex: the vertex from which the traversal of the graph starts
-        :return: the string containing the traversal result of the graph
+        :return: the array containing the traversal result of the graph
         """
         queue = [start_vertex]
         visited_vertices = [start_vertex]
-        traversal_result = "Matrix BFS result is: "
 
         # While the queue isn't empty (there are still vertices to traverse):
-        # Print the first element in the queue
-        # Put all its neighbours in the queue
+        # Pop the first element in the queue
+        # Put all its neighbours in the queue and visit them
         while queue:
             current = queue.pop(0)
-            traversal_result += str(current) + " "
 
             for i in range(self.v):
                 if self.matrix[current][i] == 1 and i not in visited_vertices:
                     queue.append(i)
                     visited_vertices.append(i)
 
-        return traversal_result
+        return visited_vertices
 
     def dfs_list(self, start_vertex):
         """
@@ -84,39 +83,45 @@ class UndirectedGraph:
         :param visited: the array of visited vertices
         :return: void
         """
+        # While there are still unvisited neighbours from the current vertex:
+        # Visit the first unvisited neighbour
+        # Go to its neighbours (one level down)
         if self.list[current_vertex] is not None:
             for neighbour in self.list[current_vertex]:
                 if neighbour not in visited:
                     visited.append(neighbour)
                     self.backtracking(neighbour, visited)
 
-    def cycles_matrix(self):
+    def connected(self):
         """
-        :return: true, if the graph has cycles and false, otherwise
+        :return: true, if the given graph is connected and false, otherwise
         """
-        traversed_vertices = []
+        # Select a random vertex
+        arbitrary = randrange(0, self.v)
 
-        for i in range(self.v):
-            visited_vertices = []
+        # Compute BFS traversal from that random vertex
+        bfs_result = self.bfs_matrix(arbitrary)
 
-            if self.dfs_modified(i, visited_vertices, traversed_vertices):
-                return True
+        if len(bfs_result) == self.v:
+            # The BFS traversal contains all the nodes so the graph is connected
+            return True
 
         return False
 
-    def dfs_modified(self, vertex, visited, traversed):
-        visited.append(vertex)
-        traversed.append(vertex)
+    def connected_components(self):
+        """
+        :return: the array containing the graph's connected components
+        """
+        connected_components = []
+        visited_vertices = []
 
         for i in range(self.v):
-            if self.matrix[vertex][i] == 1 and i not in visited:
-                if i in traversed:
-                    return True
+            if i not in visited_vertices:
+                # Compute DFS traversal (the connected component) from every unvisited vertex
+                visited_vertices = self.dfs_list(i)
+                connected_components.append(visited_vertices)
 
-                if self.dfs_modified(i, visited, traversed):
-                    return True
-
-        return False
+        return connected_components
 
     def print_matrix(self):
         """
@@ -211,6 +216,114 @@ class DirectedGraph:
                 visited.append(i)
                 self.backtracking(i, visited)
 
+    def strongly_connected(self):
+        """
+        :return: true, if the graph is strongly connected and false, otherwise
+        """
+        # Kosaraju’s DFS based simple algorithm
+        # Compute DFS traversal from the first vertex
+        dfs_result = self.dfs_matrix(0)
+
+        if len(dfs_result) != self.v:
+            # Not strongly connected
+            return False
+        else:
+            # Compute reversed graph
+            transpose_graph = self.reversed_graph()
+            matrix_copy = self.matrix.copy()
+            self.matrix = transpose_graph.copy()
+
+            # Compute DFS traversal from that random vertex on the reversed graph
+            dfs_result = self.dfs_matrix(0)
+            self.matrix = matrix_copy.copy()
+
+            if len(dfs_result) != self.v:
+                # Not strongly connected
+                return False
+
+        return True
+
+    def reversed_graph(self):
+        """
+        :return: the matrix representation of the transpose / reversed graph
+        """
+        transpose_graph = np.zeros((self.v, self.v), int)
+
+        for i in range(self.v):
+            for j in range(self.v):
+                if self.matrix[i][j] == 1:
+                    # (i, j) in the original graph => (j, i) in the reversed one
+                    # And vice versa
+                    transpose_graph[j][i] = 1
+
+        return transpose_graph
+
+    def strongly_connected_components(self):
+        """
+        :return: the array containing the graph's strongly connected components
+        """
+        # Kosaraju’s algorithm
+        strongly_connected_components = []
+        stack = []
+        visited_vertices = [0]
+
+        for i in range(self.v):
+            # Compute DFS traversal from the current vertex
+            self.dfs_strongly_connected_component(i, visited_vertices, stack)
+
+        # Compute reversed graph
+        transpose_graph = self.reversed_graph()
+        matrix_copy = self.matrix.copy()
+        self.matrix = transpose_graph.copy()
+
+        visited_vertices = []
+
+        # While the stack isn't empty:
+        # Pop an element
+        # Compute DFS traversal from it (which will compute its strongly connected component)
+        while stack:
+            vertex = stack.pop()
+            component = []
+
+            self.dfs_reversed(vertex, visited_vertices, component)
+
+            if len(component) > 0:
+                strongly_connected_components.append(component)
+
+        self.matrix = matrix_copy.copy()
+
+        return strongly_connected_components
+
+    def dfs_strongly_connected_component(self, vertex, visited, stack):
+        """
+        :param vertex: the vertex from which the traversal of the graph starts
+        :param visited: the array of visited vertices
+        :param stack: the array (stack) of vertices (in the order that they finish the recursion)
+        :return: void
+        """
+        for i in range(self.v):
+            if self.matrix[vertex][i] == 1 and i not in visited:
+                visited.append(i)
+                self.dfs_strongly_connected_component(i, visited, stack)
+
+        if vertex not in stack:
+            stack.append(vertex)
+
+    def dfs_reversed(self, vertex, visited, component):
+        """
+        :param vertex: the vertex from which the traversal of the graph starts
+        :param visited: the array of visited vertices
+        :param component: the array of vertices in the current strongly connected component
+        :return: void
+        """
+        if vertex not in visited and vertex not in component:
+            visited.append(vertex)
+            component.append(vertex)
+
+        for i in range(self.v):
+            if self.matrix[vertex][i] == 1 and i not in visited and i not in component:
+                self.dfs_reversed(i, visited, component)
+
     def print_matrix(self):
         """
         :return: void (but prints the adjacency matrix)
@@ -224,14 +337,17 @@ class DirectedGraph:
             print(row)
 
 
-v = 5
+v = 6
 edges = {(0, 1), (0, 4), (1, 2), (1, 3), (1, 4), (2, 3), (3, 4)}
 
-v = 4
-edges = {(0, 1), (1, 2), (2, 3)}
+""" v = 5
+edges = {(0, 1), (1, 3), (2, 3)} """
 
-v1 = 6
-edges1 = {(0, 1), (0, 2), (1, 3), (1, 4), (2, 4), (3, 4), (3, 5), (4, 5)}
+""" v1 = 6
+edges1 = {(0, 1), (0, 2), (1, 3), (1, 4), (2, 4), (3, 4), (3, 5), (4, 5)} """
+
+v1 = 9
+edges1 = {(0, 3), (1, 0), (2, 1), (3, 2), (4, 2), (4, 6), (5, 4), (6, 5), (6, 7), (8, 7)}
 
 # Undirected graph
 # Creation (matrix)
@@ -250,6 +366,7 @@ print(undirected_graph.list)
 print("---------------------------------------")
 
 # BFS (matrix)
+print("Matrix BFS result is: ")
 print(undirected_graph.bfs_matrix(0))
 print("---------------------------------------")
 
@@ -258,13 +375,12 @@ print("List DFS result is: ")
 print(undirected_graph.dfs_list(0))
 print("---------------------------------------")
 
-# Cycles (list)
-cycles = undirected_graph.cycles_matrix()
-
-if cycles:
-    print("The graph has cycles")
+# Connectivity
+if undirected_graph.connected():
+    print("The graph is connected")
 else:
-    print("The graph is acyclic")
+    print("The graph is NOT connected and its connected components are:")
+    print(undirected_graph.connected_components())
 print("---------------------------------------")
 
 # Directed graph
@@ -277,7 +393,7 @@ directed_graph.print_matrix()
 print("---------------------------------------")
 
 # Creation (list)
-directed_graph.compute_adjacency_list(edges)
+directed_graph.compute_adjacency_list(edges1)
 
 print("Directed graph adjacency list: ")
 print(directed_graph.list)
@@ -290,4 +406,12 @@ print("---------------------------------------")
 # DFS (matrix)
 print("Matrix DFS result is: ")
 print(directed_graph.dfs_matrix(0))
+print("---------------------------------------")
+
+# Strong connectivity
+if directed_graph.strongly_connected():
+    print("The graph is strongly connected")
+else:
+    print("The graph is NOT strongly connected and its connected components are:")
+    print(directed_graph.strongly_connected_components())
 print("---------------------------------------")
