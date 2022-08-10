@@ -5,6 +5,7 @@ class WeightedUndirectedGraph:
     def __init__(self, nr_vertices):
         self.v = nr_vertices
         self.matrix = np.zeros((self.v, self.v), int)
+        self.edges = {}
 
     def compute_adjacency_matrix(self, edges_set):
         """
@@ -12,6 +13,8 @@ class WeightedUndirectedGraph:
             (meaning there's an edge between u and v and v and u with the weight cost)
         :return: void
         """
+        self.edges = edges_set
+
         for edge in edges_set:
             i = edge[0]
             j = edge[1]
@@ -99,6 +102,38 @@ class WeightedUndirectedGraph:
                 paths.append(current_path[::-1])
 
         return paths
+
+    def bellman_ford(self, source_vertex):
+        """
+        :param source_vertex: the vertex from which the shortest path and distance to all vertices
+            will be computed
+        :return: the array of distances from the source vertex to each vertex, if the graph doesn't
+            contain negative weight cycles and False, otherwise
+        """
+        e = len(self.edges)
+        distances = [np.inf] * self.v
+        distances[source_vertex] = 0
+
+        # Compute the shortest distances in a bottom-up manner
+        for i in range(self.v - 1):
+            for edge in self.edges:
+                u = edge[0]
+                v = edge[1]
+                cost = edge[2]
+
+                if distances[u] != np.inf and distances[v] > distances[u] + cost:
+                    distances[v] = distances[u] + cost
+
+        # Check for negative weight cycles
+        for edge in self.edges:
+            u = edge[0]
+            v = edge[1]
+            cost = edge[2]
+
+            if distances[u] != np.inf and distances[v] > distances[u] + cost:
+                return False
+
+        return distances
 
     def print_matrix(self):
         """

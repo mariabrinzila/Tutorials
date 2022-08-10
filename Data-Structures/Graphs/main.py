@@ -51,7 +51,10 @@ if undirected_graph.connected():
 else:
     print("The graph is NOT connected and its connected components are:")
     print(undirected_graph.connected_components())
-print("---------------------------------------")
+
+print("                                       ")
+print("***************************************")
+print("                                       ")
 
 # Directed graph
 # Creation (matrix)
@@ -89,11 +92,18 @@ print("---------------------------------------")
 # Topological sorting
 print("Topological sorting result is: ")
 print(directed_graph.topological_sorting())
-print("---------------------------------------")
+
+print("                                       ")
+print("***************************************")
+print("                                       ")
 
 v2 = 9
 edges2 = {(0, 1, 4), (0, 7, 8), (1, 7, 11), (1, 2, 8), (2, 8, 2), (2, 3, 7), (2, 5, 4),
           (3, 4, 9), (3, 5, 14), (4, 5, 10), (5, 6, 2), (6, 8, 6), (6, 7, 1), (7, 8, 7)}
+
+v3 = 5
+edges3 = {(1, 0, -1), (1, 2, 4), (0, 2, 3), (0, 3, 2), (0, 4, 2), (3, 0, 1), (3, 2, 5),
+          (4, 3, -3)}
 
 # Weighted undirected graph
 # Creation (matrix)
@@ -107,18 +117,52 @@ print("---------------------------------------")
 # Dijkstra (matrix)
 distances, paths = weighted_undirected_graph.dijkstra_distances(0)
 
-print("Distances from source vertex 0 to all vertices are: ")
+print("Dijkstra distances from source vertex 0 to all vertices are: ")
 print(distances)
 print("---------------------------------------")
 
-print("Paths from source vertex 0 to all vertices are: ")
+print("Dijkstra paths from source vertex 0 to all vertices are: ")
 print(paths)
 print("---------------------------------------")
 
+# Bellman-Ford
+result = weighted_undirected_graph.bellman_ford(0)
+
+if not result:
+    print("The graphs contains negative weight cycles and the distances can't be computed")
+else:
+    print("Bellman-Ford distances from source vertex 0 to all vertices are: ")
+    print(result)
+
+print("                                       ")
+print("***************************************")
+print("                                       ")
+
 # Weighted directed graph
 # Creation (list)
-weighted_directed_graph = wdg.WeightedDirectedGraph(v2)
-weighted_directed_graph.compute_adjacency_list(edges2)
+weighted_directed_graph = wdg.WeightedDirectedGraph(v3)
+weighted_directed_graph.compute_adjacency_list(edges3)
 
 print("Weighted directed graph adjacency list: ")
 print(weighted_directed_graph.list)
+print("---------------------------------------")
+
+# Dijkstra (list)
+distances, paths = weighted_directed_graph.dijkstra_distances(0)
+
+print("Dijkstra distances from source vertex 0 to all vertices are: ")
+print(distances)
+print("---------------------------------------")
+
+print("Dijkstra paths from source vertex 0 to all vertices are: ")
+print(paths)
+print("---------------------------------------")
+
+# Bellman-Ford
+result = weighted_directed_graph.bellman_ford(1)
+
+if not result:
+    print("The graphs contains negative weight cycles and the distances can't be computed")
+else:
+    print("Bellman-Ford distances from source vertex 1 to all vertices are: ")
+    print(result)
