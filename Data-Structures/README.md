@@ -2,4 +2,4 @@
 
 ## Graphs: https://docs.google.com/document/d/1f8Q-hobjToNwerB6c3ffAIg9NhHBKKHFksDJRTb6QW8/edit?usp=sharing
 
-## Spanning Trees: https://docs.google.com/document/d/1YsM4t_sS-Mc-sU3me3hU95KO0mtXB90n-wcsNPziKpQ/edit?usp=sharing
+## Trees: https://docs.google.com/document/d/1YsM4t_sS-Mc-sU3me3hU95KO0mtXB90n-wcsNPziKpQ/edit?usp=sharing
