@@ -31,10 +31,10 @@ class WeightedUndirectedGraph:
         :return: the array of distances from the source vertex to each vertex and the array of
             paths from the source vertex to each vertex
         """
-        spt = [source_vertex]
         distances = [np.inf] * self.v
         parents = [source_vertex] * self.v
 
+        spt = [source_vertex]
         distances[source_vertex] = 0
         parents[source_vertex] = 0
 
@@ -110,7 +110,6 @@ class WeightedUndirectedGraph:
         :return: the array of distances from the source vertex to each vertex, if the graph doesn't
             contain negative weight cycles and False, otherwise
         """
-        e = len(self.edges)
         distances = [np.inf] * self.v
         distances[source_vertex] = 0
 

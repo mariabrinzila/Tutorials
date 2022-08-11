@@ -2,6 +2,7 @@ import undirected_graphs as ug
 import directed_graphs as dg
 import weighted_undirected_graphs as wug
 import weighted_directed_graphs as wdg
+import minimum_spanning_tree as mst
 
 
 v = 6
@@ -43,6 +44,15 @@ print("---------------------------------------")
 # DFS (list)
 print("List DFS result is: ")
 print(undirected_graph.dfs_list(0))
+print("---------------------------------------")
+
+# Cycles (Union-Find algorithm)
+result = undirected_graph.union_find()
+
+if result:
+    print("The graph contains cycles")
+else:
+    print("The graph is acyclic")
 print("---------------------------------------")
 
 # Connectivity
@@ -105,6 +115,9 @@ v3 = 5
 edges3 = {(1, 0, -1), (1, 2, 4), (0, 2, 3), (0, 3, 2), (0, 4, 2), (3, 0, 1), (3, 2, 5),
           (4, 3, -3)}
 
+""" v3 = 4
+edges3 = {(0, 1, 5), (0, 3, 10), (1, 2, 3), (2, 3, 1)} """
+
 # Weighted undirected graph
 # Creation (matrix)
 weighted_undirected_graph = wug.WeightedUndirectedGraph(v2)
@@ -166,3 +179,15 @@ if not result:
 else:
     print("Bellman-Ford distances from source vertex 1 to all vertices are: ")
     print(result)
+
+print("---------------------------------------")
+
+# Floyd Warshall
+solution = weighted_directed_graph.floyd_warshall()
+
+print("Floyd Warshall distance matrix is: ")
+print(solution)
+
+print("                                       ")
+print("***************************************")
+print("                                       ")

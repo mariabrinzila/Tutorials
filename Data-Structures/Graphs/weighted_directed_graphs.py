@@ -38,10 +38,10 @@ class WeightedDirectedGraph:
         :return: the array of distances from the source vertex to each vertex and the array of
             paths from the source vertex to each vertex
         """
-        spt = [source_vertex]
         distances = [np.inf] * self.v
         parents = [source_vertex] * self.v
 
+        spt = [source_vertex]
         distances[source_vertex] = 0
         parents[source_vertex] = 0
 
@@ -118,7 +118,6 @@ class WeightedDirectedGraph:
         :return: the array of distances from the source vertex to each vertex, if the graph doesn't
             contain negative weight cycles and False, otherwise
         """
-        e = len(self.edges)
         distances = [np.inf] * self.v
         distances[source_vertex] = 0
 
@@ -142,3 +141,35 @@ class WeightedDirectedGraph:
                 return False
 
         return distances
+
+    def floyd_warshall(self):
+        """
+        :return: the matrix containing the shortest paths between every 2 vertices in the graph
+        """
+        # Initialize the matrix:
+        # 0 on the main diagonal
+        # The cost of the edges given
+        # Infinity for the rest of the positions
+        solution_matrix = np.full((self.v, self.v), np.inf)
+
+        for i in range(self.v):
+            solution_matrix[i][i] = 0
+
+        for edge in self.edges:
+            i = edge[0]
+            j = edge[1]
+            cost = edge[2]
+
+            solution_matrix[i][j] = cost
+
+        # Pick the intermediate vertex
+        for k in range(self.v):
+            # Pick the source vertex
+            for i in range(self.v):
+                # Pick the destination vertex
+                for j in range(self.v):
+                    # Update the shortest path from the source to the destination, if necessary
+                    if solution_matrix[i][j] > solution_matrix[i][k] + solution_matrix[k][j]:
+                        solution_matrix[i][j] = solution_matrix[i][k] + solution_matrix[k][j]
+
+        return solution_matrix
