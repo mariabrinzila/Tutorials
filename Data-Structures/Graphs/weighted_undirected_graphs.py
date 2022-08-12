@@ -9,7 +9,7 @@ class WeightedUndirectedGraph:
 
     def compute_adjacency_matrix(self, edges_set):
         """
-        :param edges_set: edges_set: the set of pairs (u, v, cost) of edges
+        :param edges_set: the set of pairs (u, v, cost) of edges
             (meaning there's an edge between u and v and v and u with the weight cost)
         :return: void
         """

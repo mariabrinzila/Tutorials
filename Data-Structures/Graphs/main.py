@@ -46,7 +46,7 @@ print("List DFS result is: ")
 print(undirected_graph.dfs_list(0))
 print("---------------------------------------")
 
-# Cycles (Union-Find algorithm)
+# Cycles (the Union-Find algorithm)
 result = undirected_graph.union_find()
 
 if result:
@@ -127,7 +127,7 @@ print("Weighted undirected graph adjacency matrix: ")
 weighted_undirected_graph.print_matrix()
 print("---------------------------------------")
 
-# Dijkstra (matrix)
+# Dijkstra's algorithm  (matrix)
 distances, paths = weighted_undirected_graph.dijkstra_distances(0)
 
 print("Dijkstra distances from source vertex 0 to all vertices are: ")
@@ -138,7 +138,7 @@ print("Dijkstra paths from source vertex 0 to all vertices are: ")
 print(paths)
 print("---------------------------------------")
 
-# Bellman-Ford
+# The Bellman-Ford algorithm
 result = weighted_undirected_graph.bellman_ford(0)
 
 if not result:
@@ -160,7 +160,7 @@ print("Weighted directed graph adjacency list: ")
 print(weighted_directed_graph.list)
 print("---------------------------------------")
 
-# Dijkstra (list)
+# Dijkstra's algorithm (list)
 distances, paths = weighted_directed_graph.dijkstra_distances(0)
 
 print("Dijkstra distances from source vertex 0 to all vertices are: ")
@@ -171,7 +171,7 @@ print("Dijkstra paths from source vertex 0 to all vertices are: ")
 print(paths)
 print("---------------------------------------")
 
-# Bellman-Ford
+# The Bellman-Ford algorithm
 result = weighted_directed_graph.bellman_ford(1)
 
 if not result:
@@ -182,7 +182,7 @@ else:
 
 print("---------------------------------------")
 
-# Floyd Warshall
+# The Floyd Warshall algorithm
 solution = weighted_directed_graph.floyd_warshall()
 
 print("Floyd Warshall distance matrix is: ")
@@ -191,3 +191,31 @@ print(solution)
 print("                                       ")
 print("***************************************")
 print("                                       ")
+
+# Minimum spanning tree (MST)
+# Kruskal's algorithm
+""" v4 = 4
+edges4 = {(0, 1, 10), (0, 2, 6), (0, 3, 5), (1, 3, 15), (2, 3, 4)} """
+
+v4 = 5
+edges4 = {(0, 1, 2), (0, 3, 6), (1, 2, 3), (1, 3, 8), (1, 4, 5), (2, 4, 7), (3, 4, 9)}
+
+minimum_spanning_tree = mst.MinimumSpanningTree(v4)
+minimum_spanning_tree.compute_adjacency_matrix(edges4)
+
+# Kruskal's algorithm
+result, cost = minimum_spanning_tree.Kruskal()
+print("The minimum spanning tree computed with Kruskal's algorithm has the weight " + str(cost) +
+      " and the edges: ")
+print(result)
+print("---------------------------------------")
+
+# Prim's algorithm
+minimum_spanning_tree = mst.MinimumSpanningTree(v2)
+minimum_spanning_tree.compute_adjacency_matrix(edges2)
+
+result, cost = minimum_spanning_tree.Prim()
+print("The minimum spanning tree computed with Prim's algorithm has the weight " + str(cost) +
+      " and the edges: ")
+print(result)
+print("---------------------------------------")
