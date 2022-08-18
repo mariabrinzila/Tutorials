@@ -96,17 +96,22 @@ binary_tree.insertion(15)
 binary_tree.traversal = []
 binary_tree.bfs_traversal()
 
-print("Inserted the node with the data 15 successfully: " + str(binary_tree.traversal))
+print("Inserted the node with the data 15 successfully: "
+      + str(binary_tree.traversal))
 
 binary_tree.insertion(16)
 binary_tree.traversal = []
 binary_tree.bfs_traversal()
-print("Inserted the node with the data 16 successfully: " + str(binary_tree.traversal))
+
+print("Inserted the node with the data 16 successfully: "
+      + str(binary_tree.traversal))
 
 binary_tree.insertion(17)
 binary_tree.traversal = []
 binary_tree.bfs_traversal()
-print("Inserted the node with the data 17 successfully: " + str(binary_tree.traversal))
+
+print("Inserted the node with the data 17 successfully: "
+      + str(binary_tree.traversal))
 print("---------------------------------------")
 
 # Deletion
@@ -207,3 +212,67 @@ else:
     print("There is a node with the data " + str(result.data) + " in the binary tree")
 
 print("---------------------------------------")
+
+# Insertion
+binary_search_tree.insertion(2, binary_search_tree.root)
+
+binary_search_tree.traversal = []
+binary_search_tree.inorder_traversal(binary_search_tree.root)
+
+print("Inserted the node with the data 2 successfully: "
+      + str(binary_search_tree.traversal))
+
+binary_search_tree.insertion(20, binary_search_tree.root)
+
+binary_search_tree.traversal = []
+binary_search_tree.inorder_traversal(binary_search_tree.root)
+
+print("Inserted the node with the data 20 successfully: "
+      + str(binary_search_tree.traversal))
+print("---------------------------------------")
+
+# Deletion
+binary_search_tree.traversal = []
+binary_search_tree.bfs_traversal()
+
+print("Initial binary search tree: " + str(binary_search_tree.traversal))
+
+result = binary_search_tree.deletion(20)
+
+if not result:
+    print("There is no node with the data 20 in the binary tree")
+else:
+    binary_search_tree.traversal = []
+    binary_search_tree.bfs_traversal()
+
+    print("Deleted the node with the data 20 successfully: " + str(binary_search_tree.traversal))
+
+result = binary_search_tree.deletion(10)
+
+if not result:
+    print("There is no node with the data 10 in the binary tree")
+else:
+    binary_search_tree.traversal = []
+    binary_search_tree.bfs_traversal()
+
+    print("Deleted the node with the data 10 successfully: " + str(binary_search_tree.traversal))
+
+result = binary_search_tree.deletion(8)
+
+if not result:
+    print("There is no node with the data 8 in the binary tree")
+else:
+    binary_search_tree.traversal = []
+    binary_search_tree.bfs_traversal()
+
+    print("Deleted the node with the data 8 successfully: " + str(binary_search_tree.traversal))
+
+result = binary_search_tree.deletion(81)
+
+if not result:
+    print("There is no node with the data 81 in the binary tree")
+else:
+    binary_search_tree.traversal = []
+    binary_search_tree.bfs_traversal()
+
+    print("Deleted the node with the data 81 successfully: " + str(binary_search_tree.traversal))

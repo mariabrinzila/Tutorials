@@ -157,8 +157,12 @@ class BinaryTree:
     def insertion(self, node_data):
         """
         :param node_data: the node data that we want to insert in the binary tree
-        :return: void
+        :return: the inserted node
         """
+        if self.root is None:
+            self.root = btn.BinaryTreeNode(node_data)
+            return self.root
+
         queue = [self.root]
 
         # While the queue isn't empty (there are still nodes to traverse):
@@ -173,14 +177,14 @@ class BinaryTree:
             if current.left is None:
                 new_node = btn.BinaryTreeNode(node_data)
                 current.left = new_node
-                break
+                return new_node
             else:
                 queue.append(current.left)
 
             if current.right is None:
                 new_node = btn.BinaryTreeNode(node_data)
                 current.right = new_node
-                break
+                return new_node
             else:
                 queue.append(current.right)
 
