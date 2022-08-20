@@ -1,3 +1,6 @@
+import numpy as np
+
+
 class MaxHeap:
     def __init__(self):
         # The array in which we store the heap
@@ -45,35 +48,92 @@ class MaxHeap:
         """
         :return: the root of the heap (the greatest element) before it's removed from the heap
         """
+        # Get the root of the heap
         maximum = self.heap[0]
 
+        # Remake the heap moving down, if necessary
         if self.heap[1] > self.heap[2]:
             self.heap[0] = self.heap[1]
-            self.remake_heap(1)
+            self.remake_heap_down(1)
         else:
             self.heap[0] = self.heap[2]
-            self.remake_heap(2)
+            self.remake_heap_down(2)
 
         return maximum
 
-    def remake_heap(self, i):
+    def remake_heap_down(self, position):
         """
-        :param i: the current positin of a root (parent) in the heap
+        :param position: the position of the current root (parent) in the heap
         :return: void
         """
         # While we haven't gotten to the last level:
         # Pick the maximum key value out of the current node's children
         # Replace the parent's key with the maximum
         # After the traversal is over, delete the last node
-        while i < (len(self.heap) - 2) / 2:
-            left = self.heap[2 * i + 1]
-            right = self.heap[2 * i + 2]
+        while position <= (len(self.heap) - 3) // 2:
+            left = self.heap[2 * position + 1]
+            right = self.heap[2 * position + 2]
 
             if left > right:
-                self.heap[i] = left
-                i = 2 * i + 1
+                self.heap[position] = left
+                position = 2 * position + 1
             else:
-                self.heap[i] = right
-                i = 2 * i + 2
+                self.heap[position] = right
+                position = 2 * position + 2
 
-        del self.heap[i]
+        del self.heap[position]
+
+    def increase_key(self, position, new_key_value):
+        """
+        :param position: the position in the heap of the element whose value will change
+        :param new_key_value: the new key value of the element on the given position in the heap
+        :return: void
+        """
+        # Replace the key on the given position with the new value
+        self.heap[position] = new_key_value
+        parent_position = (position - 1) // 2
+
+        self.remake_heap_up(position, parent_position)
+
+    def remake_heap_up(self, position, parent_position):
+        """
+        :param position: the position of the current element in the heap (a child)
+        :param parent_position: the position of the current element's parent in the heap
+        :return: void
+        """
+        # While there are still elements positioned incorrectly in the heap
+        # And we haven't reached the root:
+        # Swap parent and child
+        # Go up in the heap
+        while position > 0 and self.heap[position] > self.heap[parent_position]:
+            copy = self.heap[parent_position]
+            self.heap[parent_position] = self.heap[position]
+            self.heap[position] = copy
+
+            position = parent_position
+            parent_position = (position - 1) // 2
+
+    def insertion(self, key_value):
+        """
+        :param key_value: the key value of the element which will be inserted in the heap
+        :return: void
+        """
+        # Insert element at the end of the heap
+        self.heap.append(key_value)
+
+        # Remake the heap moving up, if it's necessary
+        position = len(self.heap) - 1
+        parent_position = (position - 1) // 2
+        self.remake_heap_up(position, parent_position)
+
+    def deletion(self, position):
+        """
+        :param position: the position in the heap of the element that will be deleted
+        :return: void
+        """
+        # Increase the value of the element on the given position to inf
+        # The element to be deleted will become the root of the heap
+        self.increase_key(position, np.inf)
+
+        # Pop the root of the heap (remove the greatest element)
+        self.remove_maximum()
