@@ -9,3 +9,5 @@
 ## Binary Search Trees: https://docs.google.com/document/d/1ORxZUcp_JzoiaK8jrVC8r9HiBzFhA1h4pT87NXaTmlQ/edit?usp=sharing
 
 ## Heaps: https://docs.google.com/document/d/1pHIc3iiO2x_4kZkQBYnkO5LsNEhGIf_dZsM7M18qj64/edit?usp=sharing
+
+## Hashing: https://docs.google.com/document/d/1GPLC5yKG5xYru-vHAY15nvV87Dtj9Inxbog3z1Ef_AQ/edit?usp=sharing
