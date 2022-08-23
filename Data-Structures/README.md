@@ -1,4 +1,4 @@
-# Data Structure:
+# Data Structures:
 
 ## Stacks: https://docs.google.com/document/d/12MctRbURu4yqA9V5r_1ZM5OShwx67NGDXbwDZnA1Q9U/edit?usp=sharing
 
@@ -18,6 +18,7 @@
 
 ## Hashing Data Structures: https://docs.google.com/document/d/1GPLC5yKG5xYru-vHAY15nvV87Dtj9Inxbog3z1Ef_AQ/edit?usp=sharing
 
-# Algorithsm:
+
+# Algorithms:
 
 ## Sorting Algorithms: https://docs.google.com/document/d/1Ywqg6yUbtW-QGk5hBLL0yxw7M56dZCLoFY6gFpHlW_Y/edit?usp=sharing
