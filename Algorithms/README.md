@@ -1,4 +1,5 @@
-# Algorithms:
+# Algorithms
+
 
 Table of contents
 =================
