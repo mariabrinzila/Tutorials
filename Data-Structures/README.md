@@ -1,4 +1,5 @@
-# Data Structures:
+# Data Structures
+
 
 Table of contents
 =================
