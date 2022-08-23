@@ -1,5 +1,7 @@
 ## Stacks: https://docs.google.com/document/d/12MctRbURu4yqA9V5r_1ZM5OShwx67NGDXbwDZnA1Q9U/edit?usp=sharing
 
+## Queues: https://docs.google.com/document/d/1r0W8dv1Yw8DhPE2DtWGFbEhivlsE_9DAuBQWuZ9V4WI/edit?usp=sharing
+
 ## Linked Lists: https://docs.google.com/document/d/1kMrgXIFyhHn_mA3azFpIgcBYCc5E4BMMjJK0lCYL3I4/edit?usp=sharing
 
 ## Graphs: https://docs.google.com/document/d/1f8Q-hobjToNwerB6c3ffAIg9NhHBKKHFksDJRTb6QW8/edit?usp=sharing
@@ -13,5 +15,3 @@
 ## Heaps: https://docs.google.com/document/d/1pHIc3iiO2x_4kZkQBYnkO5LsNEhGIf_dZsM7M18qj64/edit?usp=sharing
 
 ## Hashing Data Structures: https://docs.google.com/document/d/1GPLC5yKG5xYru-vHAY15nvV87Dtj9Inxbog3z1Ef_AQ/edit?usp=sharing
-
-## Queues: https://docs.google.com/document/d/1r0W8dv1Yw8DhPE2DtWGFbEhivlsE_9DAuBQWuZ9V4WI/edit?usp=sharing
