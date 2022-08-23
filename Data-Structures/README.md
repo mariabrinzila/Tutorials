@@ -39,8 +39,3 @@ https://docs.google.com/document/d/1pHIc3iiO2x_4kZkQBYnkO5LsNEhGIf_dZsM7M18qj64/
 
 ## 9. Hashing Data Structures
 https://docs.google.com/document/d/1GPLC5yKG5xYru-vHAY15nvV87Dtj9Inxbog3z1Ef_AQ/edit?usp=sharing
-
-
-# Algorithms:
-
-### Sorting Algorithms: https://docs.google.com/document/d/1Ywqg6yUbtW-QGk5hBLL0yxw7M56dZCLoFY6gFpHlW_Y/edit?usp=sharing
