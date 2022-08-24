@@ -6,13 +6,9 @@ def insertion_sort(array):
     :param array: the array to be sorted
     :return: void
     """
-    # While there are still elements in the array to be sorted:
-    # Pick the next unsorted element
-    # Traverse the rest of the array and find the minimum value
-    # Swap it with the picked element
     length = len(array)
 
-    # Start time
+    # Start timer
     start = time.perf_counter()
 
     # While there are still elements in the array to be sorted:
@@ -28,7 +24,7 @@ def insertion_sort(array):
             array[j], array[j + 1] = array[j + 1], array[j]
             j -= 1
 
-    # End time
+    # End timer
     end = time.perf_counter()
 
     # Compute elapsed time

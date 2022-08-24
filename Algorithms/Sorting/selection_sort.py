@@ -12,7 +12,7 @@ def selection_sort(array):
     # Swap it with the picked element
     length = len(array)
 
-    # Start time
+    # Start timer
     start = time.perf_counter()
 
     for i in range(length):
@@ -24,7 +24,7 @@ def selection_sort(array):
 
         array[i], array[minimum_index] = array[minimum_index], array[i]
 
-    # End time
+    # End timer
     end = time.perf_counter()
 
     # Compute elapsed time
