@@ -6,6 +6,8 @@ import insertion_sort as insertion
 import merge_sort as merge
 import quick_sort as quick
 import heap_sort as heap
+import counting_sort as count
+import radix_sort as radix
 
 
 # Selection Sort
@@ -71,4 +73,27 @@ to_be_sorted = [100, 99, 98, 97, 90, 85, 82, 70, 65, 54, 51, 43, 37, 29, 24, 22,
 
 heap.heap_sort(to_be_sorted)
 print("The sorted array with Heap Sort is: " + str(to_be_sorted))
+print("---------------------------------------")
+
+
+# Counting Sort
+to_be_sorted = [100, 99, 98, 97, 90, 85, 82, 70, 65, 54, 51, 43, 37, 29, 24, 22, 20, 16, 12, 10, 6, 1, 100]
+
+m = min(to_be_sorted)
+n = max(to_be_sorted) + 1
+
+if m > 0:
+    m -= 1
+
+sorted_array = count.counting_sort(to_be_sorted, m, n)
+
+print("The sorted array with Counting Sort is: " + str(sorted_array))
+print("---------------------------------------")
+
+# Radix Sort
+to_be_sorted = [100, 99, 98, 97, 90, 85, 82, 70, 65, 54, 51, 43, 37, 29, 24, 22, 20, 16, 12, 10, 6, 1, 100]
+
+sorted_array = radix.radix_sort(to_be_sorted)
+
+print("The sorted array with Radix Sort is: " + str(sorted_array))
 print("---------------------------------------")
