@@ -3,7 +3,7 @@ import time
 
 def linear_search_iterative(array, to_be_sought):
     """
-    :param array: the array in which we're looking for an element
+    :param array: the array in which we're looking for the element
     :param to_be_sought: the element we're seeking in the given array
     :return: the element's index, if it exists in the given array and -1, otherwise
     """
@@ -34,12 +34,15 @@ def linear_search_iterative(array, to_be_sought):
 
 def linear_search_recursive(array, to_be_sought, position):
     """
-    :param array: the array in which we're looking for an element
+    :param array: the array in which we're looking for the element
     :param to_be_sought: the element we're seeking in the given array
     :param position: the current position in the given array
     :return: the element's index, if it exists in the given array and -1, otherwise
     """
     if position == len(array) - 1:
+        if array[position] == to_be_sought:
+            return position
+
         return -1
 
     if array[position] == to_be_sought:
