@@ -3,6 +3,9 @@
 # Overlapping subproblems <=> each i! before n! needs to be computed at least twice
 # Optimal substructure <=> the optimal solution for i!, i < n leads to the optimal solution of n!
 
+# Time complexity <=> O(n)
+# Space complexity <=> O(n)
+
 
 def factorial_tabulation(n):
     """

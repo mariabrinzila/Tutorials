@@ -3,6 +3,9 @@
 # Overlapping subproblems <=> each fib(i) before fib(n) needs to be computed at least twice
 # Optimal substructure <=> the optimal solution for fib(i), i < n leads to the optimal solution of fib(n)
 
+# Time complexity <=> O(n)
+# Space complexity <=> O(n)
+
 
 def fibonacci_tabulation(n):
     """
