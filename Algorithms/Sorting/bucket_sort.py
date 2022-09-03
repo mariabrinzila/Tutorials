@@ -9,6 +9,9 @@ def bucket_sort(array, n):
     :param n: the number of buckets (or slots for the range)
     :return: the sorted array
     """
+    # Start timer
+    start = time.perf_counter()
+
     # Bucket sort for floating point numbers between 0.0 and 1.0
     # Compute n empty buckets
     buckets = [[] for i in range(n)]
@@ -26,15 +29,11 @@ def bucket_sort(array, n):
 
     for bucket in buckets:
         insertion.insertion_sort(bucket)
-
         bucket_size = len(bucket)
 
         for i in range(bucket_size):
             output[index] = bucket[i]
             index += 1
-
-    # Start timer
-    start = time.perf_counter()
 
     # End timer
     end = time.perf_counter()
@@ -53,6 +52,9 @@ def bucket_sort_integer(array, n):
     :param n: the number of buckets (or slots for the range)
     :return: the sorted array
     """
+    # Start timer
+    start = time.perf_counter()
+
     # Bucket sort for numbers having integer part (the range isn't 0 - 1 anymore)
     # Compute the range
     maximum_element = max(array)
@@ -79,15 +81,11 @@ def bucket_sort_integer(array, n):
 
     for bucket in buckets:
         insertion.insertion_sort(bucket)
-
         bucket_size = len(bucket)
 
         for i in range(bucket_size):
             output[index] = bucket[i]
             index += 1
-
-    # Start timer
-    start = time.perf_counter()
 
     # End timer
     end = time.perf_counter()

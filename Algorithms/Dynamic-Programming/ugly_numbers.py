@@ -13,12 +13,9 @@ def ugly_numbers_memorization(n):
     :param n: the position in the ugly numbers sequence of the wanted element
     :return: the n-th ugly number
     """
-    ugly = [1]
-
     # Base case
+    ugly = [1]
     index2 = index3 = index5 = 0
-    i = 1
-
     next_multiple2 = 2
     next_multiple3 = 3
     next_multiple5 = 5

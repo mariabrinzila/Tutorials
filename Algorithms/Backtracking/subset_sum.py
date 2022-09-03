@@ -1,4 +1,4 @@
-def backtracking(initial_set, target_sum, solution, current_sum):
+def subset_sum(initial_set, target_sum, solution, current_sum):
     """
     :param initial_set: the set of positive numbers from which we need to find numbers that add up
         to a given sum
@@ -22,7 +22,7 @@ def backtracking(initial_set, target_sum, solution, current_sum):
             current_sum += element
             solution.append(element)
 
-            backtracking(initial_set, target_sum, solution, current_sum)
+            subset_sum(initial_set, target_sum, solution, current_sum)
 
             current_sum -= element
             solution.remove(element)

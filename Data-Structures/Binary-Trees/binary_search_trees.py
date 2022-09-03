@@ -108,6 +108,7 @@ class BinarySearchTree (bt.BinaryTree):
                 # The successor's data becomes the node's data
                 # Delete the successor
                 data = successor_node.data
+
                 previous = self.compute_previous(successor_node.data, self.root)
 
                 if not previous:

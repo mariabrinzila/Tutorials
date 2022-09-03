@@ -3,13 +3,13 @@ def merge_sort(array):
     :param array: the current array to be sorted
     :return: void
     """
-    length = len(array)
-
     # If the array has more than one element:
     # Compute the middle of the current array and divide the array into 2 array halves
     # Call Merge Sort for the first half array
     # Call Merge Sort for the second half array
     # Merge the 2 array halves so the larger array is sorted
+    length = len(array)
+
     if length > 1:
         middle = length // 2
         left_part = array[:middle]

@@ -6,7 +6,8 @@ import binary_search as binary
 import jump_search as jump
 
 
-array = [10, 20, 80, 30, 60, 50, 110, 100, 130, 170, 34, 1, 567, 1000, 23, 5, 10, 5, 78, 9045, 65, 0, 54, 80]
+array = [10, 20, 80, 30, 60, 50, 110, 100, 130, 170, 34, 1, 567, 1000, 23, 5, 10, 5, 78, 9045, 65, 0,
+         54, 80]
 
 # Linear Search (iterative)
 element = 2
@@ -144,7 +145,6 @@ print("---------------------------------------")
 
 # Jump Search
 element = 170
-
 n = len(array)
 m = int(np.sqrt(n))
 

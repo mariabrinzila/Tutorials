@@ -54,12 +54,12 @@ class UndirectedGraph:
         :param start_vertex: the vertex from which the traversal of the graph starts
         :return: the array containing the traversal result of the graph
         """
-        queue = [start_vertex]
-        visited_vertices = [start_vertex]
-
         # While the queue isn't empty (there are still vertices to traverse):
         # Pop the first element in the queue
         # Put all its neighbours in the queue and visit them
+        queue = [start_vertex]
+        visited_vertices = [start_vertex]
+
         while queue:
             current = queue.pop(0)
 
@@ -76,6 +76,7 @@ class UndirectedGraph:
         :return: the array containing the traversal result of the graph
         """
         visited_vertices = [start_vertex]
+
         self.backtracking(start_vertex, visited_vertices)
 
         return visited_vertices
@@ -93,6 +94,7 @@ class UndirectedGraph:
             for neighbour in self.list[current_vertex]:
                 if neighbour not in visited:
                     visited.append(neighbour)
+
                     self.backtracking(neighbour, visited)
 
     def union_find(self):

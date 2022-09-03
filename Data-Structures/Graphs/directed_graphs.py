@@ -41,13 +41,13 @@ class DirectedGraph:
         :param start_vertex: the vertex from which the traversal of the graph starts
         :return: the string containing the traversal result of the graph
         """
+        # While the queue isn't empty (there are still vertices to traverse):
+        # Print the first element in the queue
+        # Put all its neighbours in the queue
         queue = [start_vertex]
         visited_vertices = [start_vertex]
         traversal_result = "List BFS result is: "
 
-        # While the queue isn't empty (there are still vertices to traverse):
-        # Print the first element in the queue
-        # Put all its neighbours in the queue
         while queue:
             current = queue.pop(0)
             traversal_result += str(current) + " "
@@ -66,6 +66,7 @@ class DirectedGraph:
         :return: the array containing the traversal result of the graph
         """
         visited_vertices = [start_vertex]
+
         self.backtracking(start_vertex, visited_vertices)
 
         return visited_vertices
@@ -79,6 +80,7 @@ class DirectedGraph:
         for i in range(self.v):
             if self.matrix[current_vertex][i] == 1 and i not in visited:
                 visited.append(i)
+
                 self.backtracking(i, visited)
 
     def strongly_connected(self):
@@ -95,11 +97,13 @@ class DirectedGraph:
         else:
             # Compute reversed graph
             transpose_graph = self.reversed_graph()
+
             matrix_copy = self.matrix.copy()
             self.matrix = transpose_graph.copy()
 
             # Compute DFS traversal from that random vertex on the reversed graph
             dfs_result = self.dfs_matrix(0)
+
             self.matrix = matrix_copy.copy()
 
             if len(dfs_result) != self.v:
@@ -138,9 +142,9 @@ class DirectedGraph:
 
         # Compute reversed graph
         transpose_graph = self.reversed_graph()
+
         matrix_copy = self.matrix.copy()
         self.matrix = transpose_graph.copy()
-
         visited_vertices = []
 
         # While the stack isn't empty:
@@ -169,6 +173,7 @@ class DirectedGraph:
         for i in range(self.v):
             if self.matrix[vertex][i] == 1 and i not in visited:
                 visited.append(i)
+
                 self.dfs_strongly_connected_component(i, visited, stack)
 
         if vertex not in stack:

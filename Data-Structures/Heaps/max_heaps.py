@@ -12,14 +12,14 @@ class MaxHeap:
         :return: True, if the complete binary tree given can be turned into a Max-Heap and False,
             otherwise
         """
-        queue = [tree_root]
-
         # While there are still nodes in the binary tree to traverse:
         # Pop the first element from the queue and put it in the heap array
         # If the current root node has a left child, if its key is > its parent's key,
         # The heap condition is violated, otherwise put the child in the queue
         # If the current root node has a right child, if its key is > its parent's key,
         # The Min-Heap condition is violated, otherwise put the child in the queue
+        queue = [tree_root]
+
         while queue:
             current = queue.pop(0)
             self.heap.append(current.data)
@@ -124,6 +124,7 @@ class MaxHeap:
         # Remake the heap moving up, if it's necessary
         position = len(self.heap) - 1
         parent_position = (position - 1) // 2
+
         self.remake_heap_up(position, parent_position)
 
     def deletion(self, position):

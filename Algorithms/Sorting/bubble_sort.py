@@ -6,10 +6,9 @@ def bubble_sort(array):
     :param array: the array to be sorted
     :return: void
     """
-    length = len(array)
-
     # Start time
     start = time.perf_counter()
+    length = len(array)
 
     # While there are still elements in the array to be sorted:
     # Pick the next unsorted element

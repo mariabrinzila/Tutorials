@@ -18,7 +18,6 @@ class BinaryTree:
         # Get the node's data
         data = int(input("Introduce the node's data: "))
         current = btn.BinaryTreeNode(data)
-
         user_input = input("Does the node have a left child? (Y/N) ")
 
         if user_input == 'Y':
@@ -85,12 +84,12 @@ class BinaryTree:
         """
         :return: void
         """
-        queue = [self.root]
-
         # While the queue isn't empty (there are still nodes to traverse):
         # Pop the first node in the queue and put it in the traversal array
         # Put its children in the queue, if they aren't None
         # If both children are None, put the node in the leafs array
+        queue = [self.root]
+
         while queue:
             current = queue.pop(0)
             self.traversal.append(current.data)
@@ -131,14 +130,14 @@ class BinaryTree:
         if self.root.data == node_data:
             return self.root
 
-        queue = [self.root]
-
         # While the queue isn't empty (there are still nodes to traverse):
         # Pop the first node in the queue
         # If its left child is the node we're looking for, return the current node
         # Otherwise put it in the queue (if it's not None)
         # If its right child is the node we're looking for, return the current node
         # Otherwise put it in the queue (if it's not None)
+        queue = [self.root]
+
         while queue:
             current = queue.pop(0)
 
@@ -163,14 +162,14 @@ class BinaryTree:
             self.root = btn.BinaryTreeNode(node_data)
             return self.root
 
-        queue = [self.root]
-
         # While the queue isn't empty (there are still nodes to traverse):
         # Pop the first node in the queue
         # If its left child is empty, create a new node with the given node data
         # Otherwise put it in the queue
         # If its right child is empty, create a new node with the given node data
         # Otherwise put it in the queue
+        queue = [self.root]
+
         while queue:
             current = queue.pop(0)
 
@@ -200,11 +199,10 @@ class BinaryTree:
         if not node_to_be_deleted:
             return False
 
+        # Compute the deepest and rightmost node in the binary tree
         queue = [self.root]
-
         deepest_node = None
 
-        # Compute the deepest and rightmost node in the binary tree
         while queue:
             current = queue.pop(0)
 

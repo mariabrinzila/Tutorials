@@ -10,10 +10,9 @@ def selection_sort(array):
     # Pick the next unsorted element
     # Traverse the rest of the array and find the minimum value
     # Swap it with the picked element
-    length = len(array)
-
     # Start timer
     start = time.perf_counter()
+    length = len(array)
 
     for i in range(length):
         minimum_index = i

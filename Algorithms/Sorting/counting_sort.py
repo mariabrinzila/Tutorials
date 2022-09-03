@@ -11,7 +11,6 @@ def counting_sort(array, m, n):
     # Start timer
     start = time.perf_counter()
     size = len(array)
-
     count = [0 for i in range(m, n + 1)]
     output = [0 for i in range(size)]
 

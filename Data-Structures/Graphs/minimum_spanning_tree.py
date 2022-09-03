@@ -30,7 +30,6 @@ class MinimumSpanningTree:
         """
         mst = []
         parents = [-1] * self.v
-
         smallest_edge_index = 0
         mst_weight = 0
 
@@ -47,7 +46,6 @@ class MinimumSpanningTree:
             i = edge[0]
             j = edge[1]
             cost = edge[2]
-
             smallest_edge_index += 1
 
             # Find i and j's parents
@@ -79,20 +77,18 @@ class MinimumSpanningTree:
         """
         :return: the array of edges in the computed MST and the weight of it
         """
-        mst_vertices = []
-        mst = []
-
-        keys = [np.inf] * self.v
-        previous = [-1] * self.v
-
-        keys[0] = 0
-        mst_weight = 0
-
         # While not all vertices are in the MST:
         # Pick the vertex u with the smallest key value
         # Include u in the mst array
         # Update the key value of all adjacent vertices of u
         # For every adjacent vertex v, update its key value, if the cost of the (u, v) edge < keys[v]
+        mst_vertices = []
+        mst = []
+        keys = [np.inf] * self.v
+        previous = [-1] * self.v
+        keys[0] = 0
+        mst_weight = 0
+
         while len(mst_vertices) != self.v:
             smallest_key_value = np.inf
             smallest_key_value_vertex = -1

@@ -13,6 +13,7 @@ import bucket_sort as bucket
 
 # Selection Sort
 to_be_sorted = [100, 99, 98, 97, 90, 85, 82, 70, 65, 54, 51, 43, 37, 29, 24, 22, 20, 16, 12, 10, 6, 1, 100]
+
 selection.selection_sort(to_be_sorted)
 
 print("The sorted array with Selection Sort is: " + str(to_be_sorted))
@@ -20,6 +21,7 @@ print("---------------------------------------")
 
 # Bubble Sort
 to_be_sorted = [100, 99, 98, 97, 90, 85, 82, 70, 65, 54, 51, 43, 37, 29, 24, 22, 20, 16, 12, 10, 6, 1, 100]
+
 bubble.bubble_sort(to_be_sorted)
 
 print("The sorted array with Bubble Sort is: " + str(to_be_sorted))
@@ -66,8 +68,8 @@ to_be_sorted = [100, 99, 98, 97, 90, 85, 82, 70, 65, 54, 51, 43, 37, 29, 24, 22,
 
 # Start timer
 start = time.perf_counter()
-
 last_position = len(to_be_sorted) - 1
+
 quick.quick_sort(to_be_sorted, 0, last_position)
 
 # End timer
@@ -82,6 +84,7 @@ print("---------------------------------------")
 
 # Heap Sort
 to_be_sorted = [100, 99, 98, 97, 90, 85, 82, 70, 65, 54, 51, 43, 37, 29, 24, 22, 20, 16, 12, 10, 6, 1, 100]
+
 heap.heap_sort(to_be_sorted)
 
 print("The sorted array with Heap Sort is: " + str(to_be_sorted))
@@ -89,7 +92,6 @@ print("---------------------------------------")
 
 # Counting Sort
 to_be_sorted = [100, 99, 98, 97, 90, 85, 82, 70, 65, 54, 51, 43, 37, 29, 24, 22, 20, 16, 12, 10, 6, 1, 100]
-
 m = min(to_be_sorted)
 n = max(to_be_sorted) + 1
 
@@ -103,6 +105,7 @@ print("---------------------------------------")
 
 # Radix Sort
 to_be_sorted = [100, 99, 98, 97, 90, 85, 82, 70, 65, 54, 51, 43, 37, 29, 24, 22, 20, 16, 12, 10, 6, 1, 100]
+
 sorted_array = radix.radix_sort(to_be_sorted)
 
 print("The sorted array with Radix Sort is: " + str(sorted_array))
@@ -110,6 +113,7 @@ print("---------------------------------------")
 
 # Bucket Sort
 to_be_sorted = [0.897, 0.565, 0.656, 0.1234, 0.665, 0.3434, 0.12, 0.23, 0.45, 0.0006, 0.34, 0.789, 0.899]
+
 sorted_array = bucket.bucket_sort(to_be_sorted, 10)
 
 print("The sorted array with Bucket Sort is: " + str(sorted_array))

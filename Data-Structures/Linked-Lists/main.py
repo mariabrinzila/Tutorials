@@ -163,7 +163,6 @@ class LinkedList:
 
         if given_node != -1:
             # Element found
-
             if given_node == self.head:
                 # Element is at the beginning of the linked list
                 # Head must point to the node that is after the given one
@@ -187,6 +186,7 @@ nodes_data = [1, 2, 3, 9, 10, 11, 12, 4, 5, 6]
 
 # Creation
 linked_list_created = LinkedList()
+
 linked_list_created.creation(nodes_data)
 
 # Traversal
@@ -204,40 +204,48 @@ print("-------------------------------------")
 
 # Insertion (at the beginning)
 linked_list_created.insertion_first(20)
+
 print("After the insertion of 20 at the beginning of the list, the result is: "
       + str(linked_list_created.traversal()))
 print("-------------------------------------")
 
 # Insertion (after a given node)
 linked_list_created.insertion_after(45, 456)
+
 print("-------------------------------------")
 
 linked_list_created.insertion_after(45, 9)
+
 print("After the insertion of 45 after 9, the result is: "
       + str(linked_list_created.traversal()))
 print("-------------------------------------")
 
 # Insertion (at the end)
 linked_list_created.insertion_end(205)
+
 print("After the insertion of 205 at the end of the list, the result is: "
       + str(linked_list_created.traversal()))
 print("-------------------------------------")
 
 # Deletion
 linked_list_created.deletion(33)
+
 print("-------------------------------------")
 
 linked_list_created.deletion(20)
+
 print("After deleting 20, the result is: "
       + str(linked_list_created.traversal()))
 print("-------------------------------------")
 
 linked_list_created.deletion(11)
+
 print("After deleting 11, the result is: "
       + str(linked_list_created.traversal()))
 print("-------------------------------------")
 
 linked_list_created.deletion(205)
+
 print("After deleting 205, the result is: "
       + str(linked_list_created.traversal()))
 print("-------------------------------------")

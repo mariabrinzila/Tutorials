@@ -40,7 +40,6 @@ class WeightedDirectedGraph:
         """
         distances = [np.inf] * self.v
         parents = [source_vertex] * self.v
-
         spt = [source_vertex]
         distances[source_vertex] = 0
         parents[source_vertex] = 0
@@ -92,11 +91,11 @@ class WeightedDirectedGraph:
             was computed
         :return: the array of paths from the source vertex to each vertex
         """
-        paths = []
-
         # For each vertex:
         # If the distance between the source vertex and the current vertex is infinity, there is no path
         # Otherwise, compute the path by going through the parents array until finding the source vertex
+        paths = []
+
         for i in range(self.v):
             if distances[i] == np.inf:
                 paths.append([None])
@@ -159,7 +158,6 @@ class WeightedDirectedGraph:
             i = edge[0]
             j = edge[1]
             cost = edge[2]
-
             solution_matrix[i][j] = cost
 
         # Pick the intermediate vertex

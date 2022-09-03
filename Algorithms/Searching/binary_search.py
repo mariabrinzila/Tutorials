@@ -9,7 +9,6 @@ def binary_search_iterative(array, to_be_sought):
     """
     # Start time
     start = time.perf_counter()
-
     start_index = 0
     end_index = len(array) - 1
 

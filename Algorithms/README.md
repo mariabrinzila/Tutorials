@@ -8,6 +8,8 @@ Table of contents
   * [Greedy](#3-greedy)
   * [Dynamic Programming](#4-dynamic-programming)
   * [Backtracking](#5-backtracking)
+  * [Divide & Conquer](#6-divide-&-conquer)
+  * [Lee](#7-lee)
   
   
 ## 1. Sorting
@@ -28,3 +30,11 @@ https://docs.google.com/document/d/1OKbg-txKcJw2XgmuTHPI42LwPYzTplN3iHcVCEA44II/
 
 ## 5. Backtracking
 https://docs.google.com/document/d/1mfG_BI5TPT7ax_qb3o1SHqiaCFCYtCTa90Z6SfSsdHE/edit?usp=sharing
+
+
+## 6. Divide & Conquer
+https://docs.google.com/document/d/1weZ6Niw2986S29WJy8PLLTXrsTyHCloO1azkDcsxi6c/edit?usp=sharing
+
+
+## 7. Lee
+https://docs.google.com/document/d/1p5SlDrrM1wS8YBDT0tyCqHXBaz9JKrREfVvc3iSEFTI/edit?usp=sharing

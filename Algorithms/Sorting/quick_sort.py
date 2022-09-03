@@ -11,7 +11,6 @@ def quick_sort(array, low, high):
     # Call Quick Sort for the elements after the pivot
     if low < high:
         index = partition(array, low, high)
-
         quick_sort(array, low, index - 1)
         quick_sort(array, index + 1, high)
 

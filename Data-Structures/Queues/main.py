@@ -21,7 +21,6 @@ class Queue:
 
         self.rear += 1
         self.size += 1
-
         self.queue[self.rear] = element_value
 
         return True
@@ -35,7 +34,6 @@ class Queue:
 
         element = self.queue[self.front]
         self.queue.remove(self.get_front())
-
         self.rear -= 1
         self.size -= 1
 

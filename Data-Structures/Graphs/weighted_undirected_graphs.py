@@ -33,7 +33,6 @@ class WeightedUndirectedGraph:
         """
         distances = [np.inf] * self.v
         parents = [source_vertex] * self.v
-
         spt = [source_vertex]
         distances[source_vertex] = 0
         parents[source_vertex] = 0
@@ -84,11 +83,11 @@ class WeightedUndirectedGraph:
             was computed
         :return: the array of paths from the source vertex to each vertex
         """
-        paths = []
-
         # For each vertex:
         # If the distance between the source vertex and the current vertex is infinity, there is no path
         # Otherwise, compute the path by going through the parents array until finding the source vertex
+        paths = []
+
         for i in range(self.v):
             if distances[i] == np.inf:
                 paths.append([None])
@@ -110,10 +109,10 @@ class WeightedUndirectedGraph:
         :return: the array of distances from the source vertex to each vertex, if the graph doesn't
             contain negative weight cycles and False, otherwise
         """
+        # Compute the shortest distances in a bottom-up manner
         distances = [np.inf] * self.v
         distances[source_vertex] = 0
 
-        # Compute the shortest distances in a bottom-up manner
         for i in range(self.v - 1):
             for edge in self.edges:
                 u = edge[0]
