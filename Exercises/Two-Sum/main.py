@@ -6,13 +6,15 @@ class Solution(object):
         :return: the list of 2 indices of 2 numbers in the array that add up to target
         """
         # Data structure <=> hash map
+
         # Hash function <=> H(i) = target - i (the rest needed so that i + H(i) = target)
-        # Time complexity <=> O(n), where n is the number of elements in the given nums array
+
+        # Time complexity <=> O(n), where n is the number of elements in the array
         # Space complexity <=> O(n)
 
         # For each number in the array:
         # Compute the remainder (the number that added with the current number equals the target sum)
-        # Put the key - value pair in the hash table (key = remainder, value = current number)
+        # Put the key - value pair in the hash map (key = remainder, value = current number)
         hash_map = dict()
 
         for number in nums:
@@ -20,7 +22,7 @@ class Solution(object):
             hash_map[remainder] = number
 
         # For each number in the array:
-        # If the remainder for it exists as a key in the hash table,
+        # If the remainder for it exists as a key in the hash map,
         # We've found the 2 numbers that add up to the target sum
         # Compute the remainder's index in the array
         # If its index in not the index of the current number,
@@ -42,12 +44,15 @@ class Solution(object):
         :param target: the target sum
         :return: the list of 2 indices of 2 numbers in the array that add up to target
         """
-        # Hash map <=> H(x) = index(x) (key = x, value = H(x))
-        # Time complexity <=> O(n), where n is the number of elements in the given nums array
+        # Data structure <=> hash map
+
+        # H(x) = index(x) (key = x, value = H(x))
+
+        # Time complexity <=> O(n), where n is the number of elements in the array
         # Space complexity <=> O(n)
 
         # For each element in the array:
-        # If the complement already exists in the hash table, return the indices
+        # If the complement already exists in the hash map, return the indices
         # Otherwise, put the current element in the array accordingly
         size = len(nums)
         hash_map = dict()
