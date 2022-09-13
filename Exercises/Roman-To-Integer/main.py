@@ -11,7 +11,7 @@ class Solution(object):
         :param s: the string representing the roman number to be converted to an integer
         :return: the computed integer from the given roman number
         """
-        # Data structures <=> string and map (dictionary)
+        # Data structures <=> String and Map (dictionary)
 
         # Time complexity <=> O(n), where n is the size of the given string
         # Space complexity <=> O(1)

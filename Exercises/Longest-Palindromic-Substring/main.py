@@ -5,8 +5,8 @@ class Solution(object):
             (it only contains digits and English letters)
         :return: the longest palindromic substring of the given string
         """
-        # Data structure <=> string
-        # Algorithm <=> dynamic programming
+        # Data structure <=> String
+        # Algorithm <=> Dynamic Programming
 
         # P(i, j) = true, if s[i:j] is a palindrome and false, otherwise
         # P(i, j) = (P(i - 1, j + 1) and s[i] = s[j]) so the substring s[(i - 1):(j + 1)] is a palindrome

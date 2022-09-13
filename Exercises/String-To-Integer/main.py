@@ -10,7 +10,7 @@ class Solution(object):
             lower case), space, +, -, . and digits
         :return: the signed integer which the string was converted to
         """
-        # Data structure <=> string
+        # Data structure <=> String
 
         # Time complexity <=> O(n), where n is the size of the string
         # Space complexity <=> O(1)

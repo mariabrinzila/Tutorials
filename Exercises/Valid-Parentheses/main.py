@@ -5,7 +5,7 @@ class Solution(object):
         :return: True, if the string is valid (all opened parentheses close by the same type of
             parenthesis, in the correct order) and False, otherwise
         """
-        # Data structures <=> string and stack
+        # Data structures <=> String and Stack
 
         # Time complexity <=> O(n), where n is the size of the given string
         # Space complexity <=> O(n)

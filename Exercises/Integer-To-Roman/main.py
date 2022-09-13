@@ -9,7 +9,7 @@ class Solution(object):
         :param num: the integer that will be converted to a roman number
         :return: the computed roman number from the given integer
         """
-        # Data structures <=> string and array
+        # Data structures <=> String and Array
 
         # Time complexity <=> O(1)
         # Space complexity <=> O(1)

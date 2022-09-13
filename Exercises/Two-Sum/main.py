@@ -44,7 +44,7 @@ class Solution(object):
         :param target: the target sum
         :return: the list of 2 indices of 2 numbers in the array that add up to target
         """
-        # Data structure <=> hash map
+        # Data structure <=> Hash Map
 
         # H(x) = index(x) (key = x, value = H(x))
 
