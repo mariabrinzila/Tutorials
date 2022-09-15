@@ -12,6 +12,7 @@ Table of contents
   * [.NET Core](#7-.net-core)
   * [Machine Learning](#8-machine-learning)
   * [Python](#9-python)
+  * [Internet-Topics](#10-internet-topics)
   
   
 ## 1. Dart
@@ -62,3 +63,6 @@ https://profs.info.uaic.ro/~ciortuz/ML.ex-book/SLIDES/
 
 ## 9. Python
 https://sites.google.com/site/fiipythonprogramming
+
+## 10. Internet Topics
+https://docs.google.com/document/d/1515bCeN2jlL7fs08jEitmwHP5IjhXoMHWri1wdEjJNw/edit?usp=sharing
