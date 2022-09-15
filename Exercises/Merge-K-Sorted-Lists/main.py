@@ -11,7 +11,7 @@ class Solution(object):
         :param lists: the array of sorted linked lists (in ascending order)
         :return: the sorted merged linked list of all the linked lists in the given array
         """
-        # Data structure <=> Linked List
+        # Data structure <=> Linked List and Array
         # Algorithm <=> Merge Sort and Divide and Conquer
 
         # Traversing a variable number of linked lists (or any data structure) at the same time is hard

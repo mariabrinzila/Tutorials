@@ -5,8 +5,10 @@ class Solution(object):
         :param target: the target sum
         :return: the list of 2 indices of 2 numbers in the array that add up to target
         """
-        # Data structure <=> Hash Map
+        # Data structure <=> Hash Map and Array
 
+        # Key <=> the number
+        # Value <=> the corresponding complement of the key in relation to the target sum in the array
         # Hash function <=> H(i) = target - i (the rest needed so that i + H(i) = target)
 
         # Time complexity <=> O(n), where n is the number of elements in the array
@@ -44,9 +46,11 @@ class Solution(object):
         :param target: the target sum
         :return: the list of 2 indices of 2 numbers in the array that add up to target
         """
-        # Data structure <=> Hash Map
+        # Data structure <=> Hash Map and Array
 
-        # H(x) = index(x) (key = x, value = H(x))
+        # Key <=> the number
+        # Value <=> the corresponding index of the key in the array
+        # Hash function <=> H(x) = index(x) (key = x, value = H(x))
 
         # Time complexity <=> O(n), where n is the number of elements in the array
         # Space complexity <=> O(n)

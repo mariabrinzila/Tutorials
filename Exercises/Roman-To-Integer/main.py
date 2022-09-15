@@ -2,7 +2,8 @@ class Solution(object):
     def __init__(self):
         # Define the map (dictionary) of key - value pairs
         # Key <=> the roman number
-        # Value <=> the corresponding integer value
+        # Value <=> the corresponding integer value of the key
+        # Hash function <=> H(i) = integer, i is a roman number
         self.int_roman_map = {"M": 1000, "CM": 900, "D": 500, "CD": 400, "C": 100, "XC": 90,
                               "L": 50, "XL": 40, "X": 10, "IX": 9, "V": 5, "IV": 4, "I": 1}
 
@@ -11,7 +12,7 @@ class Solution(object):
         :param s: the string representing the roman number to be converted to an integer
         :return: the computed integer from the given roman number
         """
-        # Data structures <=> String and Map (dictionary)
+        # Data structures <=> String and Hash Map
 
         # Time complexity <=> O(n), where n is the size of the given string
         # Space complexity <=> O(1)
