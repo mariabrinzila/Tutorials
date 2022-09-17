@@ -1,13 +1,13 @@
 class Solution(object):
     def __init__(self):
-        # Define the array of tuples (integer, roman number) to map the transformation between the 2
+        # Define an array of tuples (integer, roman number) to map the transformation between the 2 types
         self.int_roman_list = [(1000, "M"), (900, "CM"), (500, "D"), (400, "CD"), (100, "C"), (90, "XC"),
                                (50, "L"), (40, "XL"), (10, "X"), (9, "IX"), (5, "V"), (4, "IV"), (1, "I")]
 
     def int_to_roman(self, num):
         """
-        :param num: the integer that will be converted to a roman number
-        :return: the computed roman number from the given integer
+        :param num: the number that will be converted to a roman number
+        :return: the computed roman number from the given number
         """
         # Data structures <=> String and Array
 
@@ -15,9 +15,9 @@ class Solution(object):
         # Space complexity <=> O(1)
 
         # While there are still tuples in the integer - roman array that haven't been considered:
-        # If the given integer is 0, return the solution
-        # If the result of the given integer - the current integer value >= 0:
-        # Subtract it from the given integer
+        # If the given number is 0, return the solution
+        # If the result of the given number - the current number value >= 0:
+        # Subtract it from the given number
         # Append the corresponding roman value to the roman number solution
         # Otherwise, move on to the next tuple in the array
         roman_number = ""

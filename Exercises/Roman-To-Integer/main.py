@@ -1,6 +1,6 @@
 class Solution(object):
     def __init__(self):
-        # Define the map (dictionary) of key - value pairs
+        # Define a hash map (dictionary) of key - value pairs
         # Key <=> the roman number
         # Value <=> the corresponding integer value of the key
         # Hash function <=> H(i) = integer, i is a roman number
@@ -10,7 +10,7 @@ class Solution(object):
     def roman_to_int(self, s):
         """
         :param s: the string representing the roman number to be converted to an integer
-        :return: the computed integer from the given roman number
+        :return: the computed number from the given roman number
         """
         # Data structures <=> String and Hash Map
 
@@ -19,10 +19,10 @@ class Solution(object):
 
         # While there are still characters in the given string that haven't been considered:
         # If the current character isn't I, X or C:
-        # Add the corresponding value to the integer solution and move up 1 position in the given string
+        # Add the corresponding value to the number solution and move up 1 position in the given string
         # Otherwise, look ahead at the next position
         # If it's one that could make a valid roman number (it exists in the map):
-        # Add the corresponding value to the integer solution
+        # Add the corresponding value to the number solution
         # Move up 2 positions in the given string
         integer_solution = 0
         size = len(s)

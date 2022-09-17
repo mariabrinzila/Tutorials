@@ -1,7 +1,7 @@
 class Solution(object):
     def two_sum(self, nums, target):
         """
-        :param nums: the array of integers
+        :param nums: the array of numbers that are candidates to add up to the target sum
         :param target: the target sum
         :return: the list of 2 indices of 2 numbers in the array that add up to target
         """
@@ -42,7 +42,7 @@ class Solution(object):
 
     def two_sum_better(self, nums, target):
         """
-        :param nums: the array of integers
+        :param nums: the array of numbers that are candidates to add up to the target sum
         :param target: the target sum
         :return: the list of 2 indices of 2 numbers in the array that add up to target
         """

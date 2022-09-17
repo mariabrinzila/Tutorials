@@ -57,8 +57,8 @@ class Solution(object):
 
     def compute_sub_box(self, i, j):
         """
-        :param i: the row index of the current element on the board
-        :param j: the column index of the current element on the board
+        :param i: the number which is the row index of the current element on the board
+        :param j: the number which is the column index of the current element on the board
         :return: the number of the sub-box the current element on the board belongs to
         """
         # Time complexity <=> O(1)

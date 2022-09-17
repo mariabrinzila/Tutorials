@@ -1,6 +1,6 @@
 class Solution(object):
     def __init__(self):
-        # Define the upper and lower limit for a 32-bit signed integer
+        # Define an upper and lower limit for a 32-bit signed integer
         self.upper_limit = 2 ** 31 - 1
         self.lower_limit = 2 ** 31 * (-1)
 
