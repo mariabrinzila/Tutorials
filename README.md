@@ -13,6 +13,7 @@ Table of contents
   * [Machine Learning](#8-machine-learning)
   * [Python](#9-python)
   * [Internet-Topics](#10-internet-topics)
+  * [OOP](#11-oop)
   
   
 ## 1. Dart
@@ -64,5 +65,10 @@ https://profs.info.uaic.ro/~ciortuz/ML.ex-book/SLIDES/
 ## 9. Python
 https://sites.google.com/site/fiipythonprogramming
 
+
 ## 10. Internet Topics
 https://docs.google.com/document/d/1515bCeN2jlL7fs08jEitmwHP5IjhXoMHWri1wdEjJNw/edit?usp=sharing
+
+
+## 11. OOP
+https://docs.google.com/document/d/18LCW0nA0Se7hnxTbdUuJRKJ7cqfdwcF4UxqDr5sJhWg/edit?usp=sharing
