@@ -14,6 +14,7 @@ Table of contents
   * [Python](#9-python)
   * [Internet-Topics](#10-internet-topics)
   * [OOP](#11-oop)
+  * [Complexities](#12-complexities)
   
   
 ## 1. Dart
@@ -72,3 +73,7 @@ https://docs.google.com/document/d/1515bCeN2jlL7fs08jEitmwHP5IjhXoMHWri1wdEjJNw/
 
 ## 11. OOP
 https://docs.google.com/document/d/18LCW0nA0Se7hnxTbdUuJRKJ7cqfdwcF4UxqDr5sJhWg/edit?usp=sharing
+
+
+## 12. Complexities
+https://docs.google.com/document/d/1t9mfx2sylsHt0tBHhfaFQ9rsTxxG5dnDw9a-_iA3fkU/edit?usp=sharing
