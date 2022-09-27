@@ -18,52 +18,40 @@ class Solution(object):
 
         # We need the optimal solution (the one which has a minimum sum) <=> backtracking
         # But the size of the grid is big, so we need an optimization <=> dynamic programming
-        # Since we can just move down or to the right,
-        # There are only m possible paths possible, so we don't need to try every possible option
-        # The first line with the last column,
-        # The first line without the first element and the second to last column with the last element
-        # On the last column and so on
+        # We need partial sums on the first row and first column
+        # And with that we can compute the rest of the partial sums
+        # At the end, the result will be on the bottom right corner of the matrix
 
-        # Time complexity <=> O(m * n + n * 2 + n), where n is the size of the linked list
-        # Space complexity <=> O(1)
+        # Time complexity <=> O(m * n + m + n), where n is the size of the linked list
+        # Space complexity <=> O(m * n)
 
         # Base case <=> the matrix only has one element
         m = len(grid)
         n = len(grid[0])
+        partial_sums = grid[:]
 
         if m == 1 and n == 1:
             return grid[0][0]
 
-        # Compute the sum of the numbers on the first line in the matrix
-        line_sum = 0
+        # Compute the partial sums on the first row
+        # By adding the current number with the one before it
+        for i in range(1, n):
+            partial_sums[0][i] = grid[0][i - 1] + partial_sums[0][i]
 
-        for i in range(n):
-            line_sum += grid[0][i]
+        # Compute the partial sums on the first column
+        # By adding the current number with the one before it
+        for i in range(1, m):
+            partial_sums[i][0] = grid[i - 1][0] + partial_sums[i][0]
 
-        # Compute each possible path and see if it has a minimum sum
-        # For each column:
-        # Compute the sum of the numbers on the current column
-        # Add the remaining elements on the last line in the matrix
-        # Subtract the element on the first column that isn't used in the path
-        i = m - 1
+        # Compute the partial sums in the rest of the matrix
+        # By finding the minimum between the previous number row wise and the previous one column wise
+        # And adding it with the current number
+        for i in range(1, m):
+            for j in range(1, n):
+                partial_sums[i][j] = min(partial_sums[i - 1][j], partial_sums[i][j - 1]) \
+                                     + partial_sums[i][j]
 
-        for i in range(n - 1, -1, -1):
-            current_sum = line_sum
-
-            for j in range(m):
-                if j != 0:
-                    current_sum += grid[j][i]
-
-            for current in range(i + 1, n):
-                current_sum += grid[m - 1][current]
-
-            if i + 1 < n:
-                current_sum -= grid[0][i + 1]
-
-            if current_sum < self.min_sum:
-                self.min_sum = current_sum
-
-        return self.min_sum
+        return partial_sums[m - 1][n - 1]
 
     def min_path_sum_backtracking(self, grid):
         """
@@ -166,4 +154,3 @@ grid1 = [[1, 4, 8, 6, 2, 2, 1, 7], [4, 7, 3, 1, 4, 5, 5, 1], [8, 8, 2, 1, 1, 8, 
          [5, 7, 5, 7, 1, 8, 5, 5], [7, 0, 9, 4, 5, 6, 5, 6], [4, 9, 9, 7, 9, 1, 9, 0]]
 
 print(Solution().min_path_sum(grid1))
-print("-------------------------------------")
