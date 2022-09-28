@@ -22,7 +22,7 @@ class Solution(object):
         # And with that we can compute the rest of the partial sums
         # At the end, the result will be on the bottom right corner of the matrix
 
-        # Time complexity <=> O(m * n + m + n), where n is the size of the linked list
+        # Time complexity <=> O(m * n + m + n), where n is the size of the matrix
         # Space complexity <=> O(m * n)
 
         # Base case <=> the matrix only has one element
@@ -66,7 +66,7 @@ class Solution(object):
         # For each possible neighbour of a position, see if it leads to a solution
         # If an element doesn't lead to a solution, backtrack and try another neighbour
 
-        # Time complexity <=> O(2 ^ (m * n)), where n is the size of the linked list
+        # Time complexity <=> O(2 ^ (m * n)), where n is the size of the matrix
         # Space complexity <=> O(1)
 
         # Compute the start and the destination
