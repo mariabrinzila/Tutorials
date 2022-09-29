@@ -15,62 +15,136 @@ class Solution(object):
         :return: True, if the binary tree is symmetric around its center and False, otherwise
         """
         # Data structure <=> Binary Tree
-        # Algorithm <=> DFS (Preorder)
+        # Algorithm <=> DFS
 
-        # The DFS preorder traversal <=> root, left, right
-        # If the root's left and right subtree are identical, the binary tree is symmetric around
-        # Its center
-        # 2 binary trees are identical, if we're able to traverse them simultaneously
-        # Without any problems (their heights are identical, all their element's values are the same
-        # And the tree's structure is the same)
+        # We need to simultaneously traverse both subtrees of the root to check the symmetry <=> DFS
 
-        # Time complexity <=> O(n), where n is the maximum number of nodes in one of the 2 binary trees
+        # Time complexity <=> O(n - 1), where n is the number of nodes in the binary tree
         # Space complexity <=> O(1)
 
-        # For the root's left and right subtrees, do a simultaneous traversal
-        # And check if they're identical
-        return self.simultaneous_traversal(root.left, root.right)
+        # Base case <=> we have maximum 3 nodes in the binary tree
+        if root.left is None and root.right is None:
+            return True
+        elif (root.left is None and root.right is not None) \
+                or (root.left is not None and root.right is None):
+            return False
+        elif root.left is not None and root.right is not None \
+                and root.left.left is None and root.left.right is None \
+                and root.right.left is None and root.right.right is None:
+            if root.left.val == root.right.val:
+                return True
+            else:
+                return False
 
-    def simultaneous_traversal(self, p, q):
+        return self.symmetric_subtrees(root.left, root.right)
+
+    def symmetric_subtrees(self, l, r):
         """
-        :param p: the first binary tree to be traversed simultaneously with the second binary tree
-        :param q: the second binary tree
-        :return: True, if the 2 given binary trees are identical and False, otherwise
+        :param l: the current left subtree of the given binary tree
+        :param r: the current right subtree of the given binary tree
+        :return: True, if the left and right subtrees are symmetrical (mirrored) and False, otherwise
         """
-        # If both binary trees are empty, they're identical
-        # If only one of them is empty, they're not identical
-        # If the value of the current node in the first binary tree isn't equal to the value in
-        # The current node in the second binary tree, they're not identical
-        if p is None and q is None:
+        # If the subtrees' root's values don't correspond, they're not symmetrical
+        # If both subtrees have no children, they're symmetrical
+        # If one subtree has at least one child and they other one is empty, they're not symmetrical
+        # If both subtrees have one child:
+        # If the child is on opposing sides (one is on the left and the other on the right or vice-versa):
+        # Keep exploring if they're symmetrical from that child for both subtrees
+        # Otherwise, they're not symmetrical
+        # If one subtree has one child and the other has 2, they're not symmetrical
+        # If both subtrees have 2 children:
+        # If their values are opposed (the value of the first subtree's left child corresponds
+        # To the value of the second subtree's right child and vice-versa):
+        # Keep exploring if they're symmetrical from both children for both subtrees,
+        # So keep exploring the corresponding pair (left - right and right - left)
+        if l.val != r.val:
+            return False
+
+        if l.left is None and l.right is None and r.left is None and r.right is None:
             return True
 
-        if p is None or q is None:
+        if (l.left is not None or l.right is not None) and r.left is None and r.right is None \
+                or (r.left is not None or r.right is not None) and l.left is None and l.right is None:
             return False
 
-        if p.val != q.val:
+        if l.left is None and r.left is None:
+            return False
+        elif l.left is None and r.right is None:
+            if l.right.val == r.left.val:
+                return self.symmetric_subtrees(l.right, r.left)
+            else:
+                return False
+
+        if l.right is None and r.right is None:
+            return False
+        elif l.right is None and r.left is None:
+            if l.left.val == r.right.val:
+                return self.symmetric_subtrees(l.left, r.right)
+            else:
+                return False
+
+        if (l.left is not None and l.right is not None
+            and (r.left is not None and r.right is None or r.left is None and r.right is not None)) \
+                or (r.left is not None and r.right is not None
+                    and (l.left is not None and l.right is None or l.left is None and l.right is not None)):
             return False
 
-        return self.simultaneous_traversal(p.left, q.left) \
-            and self.simultaneous_traversal(p.right, q.right)
+        if l.left.val == r.right.val and l.right.val == r.left.val \
+                or (l.left.val == r.right.val == l.right.val == r.left.val):
+            return self.symmetric_subtrees(l.left, r.right) and self.symmetric_subtrees(l.right, r.left)
+        else:
+            return False
 
 
 # Example 1
-r = TreeNode(1, TreeNode(2, TreeNode(3, None), TreeNode(4, None)),
-             TreeNode(2, TreeNode(3, None), TreeNode(4, None)))
+root1 = TreeNode(1, TreeNode(2, TreeNode(3, None), TreeNode(4, None)),
+                 TreeNode(2, TreeNode(4, None), TreeNode(3, None)))
 
-print(Solution().is_symmetric(r))
+print(Solution().is_symmetric(root1))
 print("-------------------------------------")
 
 # Example 2
-r = TreeNode(1, TreeNode(2, None, TreeNode(3, None)),
-             TreeNode(2, None, TreeNode(3, None)))
+root1 = TreeNode(1, TreeNode(2, None, TreeNode(3, None)),
+                 TreeNode(2, None, TreeNode(3, None)))
 
-print(Solution().is_symmetric(r))
+print(Solution().is_symmetric(root1))
 print("-------------------------------------")
 
 # Example 3
-r = TreeNode(1, TreeNode(2, TreeNode(3, None), None),
-             TreeNode(2, None, TreeNode(3, None)))
+root1 = TreeNode(1, TreeNode(2, TreeNode(3, None), None),
+                 TreeNode(2, None, TreeNode(3, None)))
 
-print(Solution().is_symmetric(r))
+print(Solution().is_symmetric(root1))
+print("-------------------------------------")
+
+# Example 4
+root1 = TreeNode(0,
+                 TreeNode(-37,
+                          TreeNode(80,
+                                   TreeNode(-93,
+                                            TreeNode(32, TreeNode(-99), TreeNode(89)),
+                                            TreeNode(43, None, TreeNode(-96))),
+                                   TreeNode(9,
+                                            TreeNode(-8, None, TreeNode(-45)),
+                                            TreeNode(-50, TreeNode(57), None))),
+                          TreeNode(-71,
+                                   TreeNode(26,
+                                            TreeNode(76, TreeNode(-87), None),
+                                            TreeNode(76, TreeNode(-90), None)),
+                                   None)),
+                 TreeNode(-37,
+                          TreeNode(-71,
+                                   None,
+                                   TreeNode(26,
+                                            TreeNode(76, None, TreeNode(-90)),
+                                            TreeNode(76, None, TreeNode(-87)))),
+                          TreeNode(80,
+                                   TreeNode(9,
+                                            TreeNode(-50, None, TreeNode(57)),
+                                            TreeNode(-8, TreeNode(-45), None)),
+                                   TreeNode(-93,
+                                            TreeNode(43, TreeNode(-96), None),
+                                            TreeNode(32, TreeNode(89), TreeNode(-99))))))
+
+print(Solution().is_symmetric(root1))
 print("-------------------------------------")
