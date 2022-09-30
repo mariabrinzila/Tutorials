@@ -14,8 +14,8 @@ class Solution(object):
         """
         # Data structures <=> String and Hash Map
 
-        # Time complexity <=> O(n), where n is the size of the given string
-        # Space complexity <=> O(1)
+        # Time complexity <=> O(n), where n is the size of the string
+        # Space complexity <=> O(13)
 
         # While there are still characters in the given string that haven't been considered:
         # If the current character isn't I, X or C:

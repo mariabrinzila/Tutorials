@@ -44,6 +44,9 @@ class Solution(object):
         :param r: the current right subtree of the given binary tree
         :return: True, if the left and right subtrees are symmetrical (mirrored) and False, otherwise
         """
+        # Time complexity <=> O(n - 1), where n is the number of nodes in the binary tree
+        # Space complexity <=> O(1)
+
         # If the subtrees' root's values don't correspond, they're not symmetrical
         # If both subtrees have no children, they're symmetrical
         # If one subtree has at least one child and they other one is empty, they're not symmetrical
@@ -147,4 +150,3 @@ root1 = TreeNode(0,
                                             TreeNode(32, TreeNode(89), TreeNode(-99))))))
 
 print(Solution().is_symmetric(root1))
-print("-------------------------------------")

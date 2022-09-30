@@ -105,4 +105,3 @@ initial_string = "bananas"
 solution = Solution()
 
 print(solution.longest_palindrome(initial_string))
-print("-------------------------------------")

@@ -7,7 +7,7 @@ class Solution(object):
         """
         # Data structures <=> String and Stack
 
-        # Time complexity <=> O(n), where n is the size of the given string
+        # Time complexity <=> O(n), where n is the size of the string
         # Space complexity <=> O(n)
 
         # Base case <=> s only has one character
@@ -73,4 +73,3 @@ print("-------------------------------------")
 s1 = "){"
 
 print(Solution().is_valid(s1))
-print("-------------------------------------")

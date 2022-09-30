@@ -94,6 +94,9 @@ class Solution(object):
         :param q: the second binary tree
         :return: True, if the 2 given binary trees are identical and False, otherwise
         """
+        # Time complexity <=> O(n), where n is the maximum number of nodes in one of the 2 binary trees
+        # Space complexity <=> O(1)
+
         # If both current nodes are None, the 2 given binary trees are identical
         # If only one of the current nodes is None, the 2 given binary trees aren't identical
         # If the values of the current nodes aren't identical, the 2 given binary trees aren't identical

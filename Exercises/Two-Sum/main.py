@@ -46,14 +46,12 @@ class Solution(object):
         :param target: the target sum
         :return: the list of 2 indices of 2 numbers in the array that add up to target
         """
-        # Data structure <=> Hash Map and Array
+        # Time complexity <=> O(n), where n is the number of elements in the array
+        # Space complexity <=> O(n)
 
         # Key <=> the number
         # Value <=> the corresponding index of the key in the array
         # Hash function <=> H(x) = index(x) (key = x, value = H(x))
-
-        # Time complexity <=> O(n), where n is the number of elements in the array
-        # Space complexity <=> O(n)
 
         # For each element in the array:
         # If the complement already exists in the hash map, return the indices
@@ -98,4 +96,3 @@ solution = Solution()
 
 print(solution.two_sum(numbers, target_sum))
 print(solution.two_sum_better(numbers, target_sum))
-print("-------------------------------------")

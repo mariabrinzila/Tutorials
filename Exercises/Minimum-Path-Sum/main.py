@@ -22,7 +22,7 @@ class Solution(object):
         # And with that we can compute the rest of the partial sums
         # At the end, the result will be on the bottom right corner of the matrix
 
-        # Time complexity <=> O(m * n + m + n), where n is the size of the matrix
+        # Time complexity <=> O(m * n + m + n), where m and n are the dimensions of the matrix
         # Space complexity <=> O(m * n)
 
         # Base case <=> the matrix only has one element
@@ -66,7 +66,7 @@ class Solution(object):
         # For each possible neighbour of a position, see if it leads to a solution
         # If an element doesn't lead to a solution, backtrack and try another neighbour
 
-        # Time complexity <=> O(2 ^ (m * n)), where n is the size of the matrix
+        # Time complexity <=> O(2 ^ (m * n)), where m and n are the dimensions of the matrix
         # Space complexity <=> O(1)
 
         # Compute the start and the destination
@@ -91,6 +91,9 @@ class Solution(object):
         :param current_sum: the sum of the numbers so far on the current path
         :return: void
         """
+        # Time complexity <=> O(2 ^ (m * n)), where m and n are the dimensions of the matrix
+        # Space complexity <=> O(1)
+
         # Base case <=> the current position is the destination
         if current_position[0] == destination[0] and current_position[1] == destination[1]:
             if current_sum < self.min_sum:
@@ -121,6 +124,9 @@ class Solution(object):
             (line x, column y)
         :return: True, if the current position is valid and False, otherwise
         """
+        # Time complexity <=> O(1)
+        # Space complexity <=> O(1)
+
         # Valid position <=> in the matrix
         line = position[0]
         column = position[1]

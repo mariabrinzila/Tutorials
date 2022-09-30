@@ -29,8 +29,8 @@ class Solution(object):
         # If it does, we go on that path and see if we reach the solution (the whole string)
         # Otherwise, we go back and look for that current character elsewhere in the matrix
 
-        # Time complexity <=> O(m * n * 4 * s), where m, n is the size of the matrix and s is the
-        # Size of the string
+        # Time complexity <=> O(m * n * 4 * s), where m and n are the dimensions of the matrix
+        # And s is the size of the string
         # Space complexity <=> O(s)
 
         # Compute the dimensions of the matrix

@@ -23,8 +23,8 @@ class Solution(object):
         # Each digit can appear maximum 9 times on the board (once in each sub-box)
         # In case of collisions <=> separate chaining (every index has an array of value objects)
 
-        # Time complexity <=> O(81 * 9) = O(729) in the worst case
-        # Space complexity <=> O(9)
+        # Time complexity <=> O(n), where n is the number of filled positions in the matrix
+        # Space complexity <=> O(n)
 
         # For each element in the matrix (on the board):
         # If the element isn't '.':

@@ -69,7 +69,7 @@ class Solution(object):
         return integer
 
 
-# Example 1 -2147483648
+# Example 1
 s1 = "-42"
 
 print(Solution().my_atoi(s1))

@@ -11,8 +11,8 @@ class Solution(object):
         """
         # Data structures <=> String and Array
 
-        # Time complexity <=> O(1)
-        # Space complexity <=> O(1)
+        # Time complexity <=> O(13)
+        # Space complexity <=> O(13)
 
         # While there are still tuples in the integer - roman array that haven't been considered:
         # If the given number is 0, return the solution
