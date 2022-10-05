@@ -1,11 +1,12 @@
 class Solution(object):
     def __init__(self):
+        # Define an array of all the valid IP addresses from the given string
         self.IP_addresses = []
 
     def restore_IP_addresses(self, s):
         """
         :param s: the string containing only digits that will be split in all possible IP addresses
-            (an IP address is consists of exactly four integers separated by single dots, each integer
+            (an IP address consists of exactly four integers separated by single dots, each integer
             is between 0 and 255 (inclusive) and cannot have leading zeros)
         :return: the array containing all possible IP addresses with the digits in the given string
             (their order can't be changed)
@@ -14,171 +15,59 @@ class Solution(object):
         # Algorithm <=> Backtracking
 
         # We need to generate all possible IP addresses <=> backtracking
-        # We need to pick 4 maximum 3 character long strings that are separated by .
+        # We need to pick 4 maximum 3 character long strings that will be separated by .
 
-        # Time complexity <=> O(n), where n is the size of the array
-        # Space complexity <=> O(1)
+        # Time complexity <=> O(n * (n / 2) * (n / 3) ^ 4), where n is the size of the array
+        # Space complexity <=> O(size * (n + 3)), where size is the number of valid IP addresses created
 
-        # Base case <=> s contains too many or too few digits (an IP address can have at most 12 digits
-        # And at least 4 digits)
-        # Or only contains 4 digits
+        # Base case <=> the given string contains too many or too few digits
+        # An IP address can have at most 12 digits and at least 4 digits
+        # Or the given string only contains 4 digits
         if len(s) == 4:
             solution = s[0] + '.' + s[1] + '.' + s[2] + '.' + s[3]
             return [solution]
-        elif 4 > len(s) > 12:
+        elif len(s) < 4 or len(s) > 12:
             return []
 
         self.backtracking(s, 0, "")
 
         return self.IP_addresses
 
-    def backtracking(self, s, position, solution):
+    def backtracking(self, s, segment_number, solution):
         """
-        :param s: the string containing only digits that will be split in all possible IP addresses
+        :param s: the current string containing only digits that will be split in all possible IP addresses
             (an IP address is consists of exactly four integers separated by single dots, each integer
             is between 0 and 255 (inclusive) and cannot have leading zeros)
-        :param position: the current position we've reached in s
+        :param segment_number: the current number of segments in the current solution (a segment is
+            a number before a dot)
         :param solution: the current IP address solution
         :return: void
         """
-        # Time complexity <=> O(n), where n is the size of the array
-        # Space complexity <=> O(1)
+        # Time complexity <=> O(n * (n / 2) * (n / 3) ^ 4), where n is the size of the array
+        # Space complexity <=> O(size * (n + 3)), where size is the number of valid IP addresses created
 
-        # Base case <=> we finished the given array
+        # If the segment number is > 4, backtrack
+        # If the segment number is equal to 4 and the whole given string has been traversed:
+        # We've found a new IP address solution, so add it to the array of solutions
+        # Otherwise (the segment number is < 4):
+        # For each character in the current string s:
+        # If we've found a 0 or a character / group of characters between 1 and 255:
+        # We've found a valid number for the current segment
+        # So go from that point and look for a number for the next segment in the current solution
+        # If the current character / group of characters doesn't lead to a valid IP address:
+        # Backtrack and try to find another number for that segment
+        if segment_number > 4:
+            return
+
+        if segment_number == 4 and not s:
+            self.IP_addresses.append(solution[:-1])
+            return
+
         n = len(s)
 
-        if position == n:
-            print(s[:(n - 1)])
-            self.IP_addresses.append(s[:(n - 1)])
-
-        # For each element in the given string, from current position on:
-        # Pick one character, then 2, then 3 and see if it leads to a valid solution
-        for i in range(position, n):
-            if s[i] == "0":
-                copy = s
-                s = s[:(i + 1)] + '.' + s[(i + 1):]
-
-                self.backtracking(s, position + 2, solution)
-                s = copy
-            elif int(s[i]) > 2 and s[i] != '.':
-                if i + 1 < n:
-                    copy = s
-                    s = s[:(i + 2)] + '.' + s[(i + 2):]
-
-                    self.backtracking(s, position + 3, solution)
-                    s = copy
-
-                copy = s
-                s = s[:(i + 1)] + '.' + s[(i + 1):]
-
-                self.backtracking(s, position + 2, solution)
-                s = copy
-            else:
-                if i + 2 < n:
-                    copy = s
-                    s = s[:(i + 3)] + '.' + s[(i + 3):]
-
-                    self.backtracking(s, position + 4, solution)
-                    s = copy
-
-                if i + 1 < n:
-                    copy = s
-                    s = s[:(i + 2)] + '.' + s[(i + 2):]
-
-                    self.backtracking(s, position + 3, solution)
-                    s = copy
-
-                copy = s
-                s = s[:(i + 1)] + '.' + s[(i + 1):]
-
-                self.backtracking(s, position + 2, solution)
-                s = copy
-
-    def backtracking1(self, s, position, solution):
-        """
-        :param s: the string containing only digits that will be split in all possible IP addresses
-            (an IP address is consists of exactly four integers separated by single dots, each integer
-            is between 0 and 255 (inclusive) and cannot have leading zeros)
-        :param position: the current position we've reached in s
-        :param solution: the current IP address solution
-        :return: void
-        """
-        # Time complexity <=> O(n), where n is the size of the array
-        # Space complexity <=> O(1)
-
-        # Base case <=> we finished the given array
-        n = len(s)
-
-        if position == n and self.valid_IP_address(solution, s):
-            self.IP_addresses.append(solution[:(len(solution) - 1)])
-
-        # For each element in the given string, from current position on:
-        # Pick one character, then 2, then 3 and see if it leads to a valid solution
-        for i in range(position, n):
-            if s[i] == "0":
-                solution_copy = solution
-                solution += s[i] + "."
-
-                self.backtracking(s, position + 1, solution)
-                solution = solution_copy
-            else:
-                if i + 2 < n and int(s[i] + s[i + 1] + s[i + 2]) <= 255:
-                    solution_copy = solution
-                    solution += s[i] + s[i + 1] + s[i + 2] + "."
-
-                    self.backtracking(s, position + 3, solution)
-
-                    solution = solution_copy
-
-                if i + 1 < n:
-                    solution_copy = solution
-                    solution += s[i] + s[i + 1] + "."
-
-                    self.backtracking(s, position + 2, solution)
-
-                    solution = solution_copy
-
-                solution_copy = solution
-                solution += s[i] + "."
-
-                self.backtracking(s, position + 1, solution)
-
-                solution = solution_copy
-
-    def valid_IP_address(self, IP, s):
-        """
-        :param s: the string containing only digits that will be split in all possible IP addresses
-            (an IP address is consists of exactly four integers separated by single dots, each integer
-            is between 0 and 255 (inclusive) and cannot have leading zeros)
-        :param IP: the IP address computed that may or may not be valid
-        :return: True, if the IP address is valid and False, otherwise
-        """
-        # Time complexity <=> O(n), where n is the size of the string
-        # Space complexity <=> O(4)
-
-        # Split the IP by .
-        numbers = IP.split(".")
-
-        # Valid IP address <=> contains all digits in the given string, in the correct order
-        # Base case <=> the size of all numbers doesn't add up to the size of the given string
-        if len(numbers[0]) + len(numbers[1]) + len(numbers[2]) + len(numbers[3]) != len(s):
-            return False
-
-        # For each number:
-        # For each digit in the current number:
-        # If it doesn't match with the respective digit in the given string, the IP isn't valid
-        index_s = 0
-
-        for number in numbers:
-            size = len(number)
-
-            for i in range(size):
-                if number[i] != s[index_s]:
-                    return False
-
-                index_s += 1
-
-        return True
+        for i in range(1, n + 1):
+            if s[:i] == '0' or (s[0] != '0' and 0 < int(s[:i]) <= 255):
+                self.backtracking(s[i:], segment_number + 1, solution + s[:i] + '.')
 
 
 # Example 1
@@ -186,3 +75,14 @@ s1 = "25525511135"
 
 print(Solution().restore_IP_addresses(s1))
 print("-------------------------------------")
+
+# Example 2
+s1 = "101023"
+
+print(Solution().restore_IP_addresses(s1))
+print("-------------------------------------")
+
+# Example 3
+s1 = "0000"
+
+print(Solution().restore_IP_addresses(s1))
