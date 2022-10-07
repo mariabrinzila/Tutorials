@@ -97,4 +97,3 @@ for i in range(1, size):
         results.append(stack.top())
 
 print(results)
-print("-------------------------------------")
