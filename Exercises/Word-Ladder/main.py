@@ -12,6 +12,110 @@ class Solution(object):
             in the sequence is different from the previous and next word by just one character, if one
             exists and 0, otherwise
         """
+        # Data structure <=> String, Array, Hash Map, Queue
+        # Algorithm <=> BFS
+
+        # The process of constructing the graph is time-consuming
+        # As the process of checking which words only differ by one letter is time-consuming
+        # But this can be done more efficiently
+        # Since each word has m intermediate words, where m is the size of the word
+        # An intermediate word being a word that differs by one character from the original one
+        # And that letter is marked with a *
+        # For example, for dog, the intermediate words are *og, d*g and do*
+        # So we can store all the words that have the same intermediate word in an array <=> hash map
+        # After doing this processing of the words in the given array
+        # We go from the beginning point, compute all its intermediate words
+        # And find the words that have intermediate words in common with it
+        # Which simulates the process of a graph (each word is a vertex and the ones that have
+        # Intermediate words in common with it are connected by an edge)
+        # Then go from each of these words in order and repeat the process
+        # Until we find the end point or until we can't go to any other word anymore <=> BFS
+
+        # Key <=> the intermediate word (the * is the letter that will be substituted)
+        # Value <=> the array of words that have that intermediate word in their list of intermediate words
+        # Hash function <=> H(intermediate) = [w1, w2, ...]
+
+        # Time complexity <=> O(n * m * m), where n is the size of the array
+        # And m is the size of each string
+        # Space complexity <=> O(n * m * m)
+        # BFS takes just as much time as the word processing (in the worst case)
+
+        # Base case <=> the end word doesn't exist in the dictionary, so we can't get to it
+        if end_word not in word_list:
+            return 0
+
+        # Compute the hash map with all the intermediate words and the words that share them
+        hash_map = self.process_words(word_list)
+
+        # While the queue isn't empty:
+        # Pop the first element of the queue
+        # Compute all the intermediate words of the current word
+        # Compute all the other words that have intermediate words in common with the current word
+        # These words will be the vertices in the graph that are adjacent with the current word
+        # So add the unvisited adjacent words to the queue
+        queue = [(begin_word, 1)]
+        visited = [begin_word]
+
+        while queue:
+            current_tuple = queue.pop(0)
+            current_word = current_tuple[0]
+            current_level = current_tuple[1]
+
+            m = len(current_word)
+
+            for i in range(m):
+                intermediate_word = current_word[:i] + "*" + current_word[(i + 1):]
+
+                if hash_map.get(intermediate_word) is not None:
+                    for word in hash_map[intermediate_word]:
+                        if word == end_word:
+                            return current_level + 1
+
+                        if word not in visited:
+                            queue.append((word, current_level + 1))
+                            visited.append(word)
+
+        return 0
+
+    def process_words(self, word_list):
+        """
+        :param word_list: the array of strings representing the dictionary (the words that we can
+            use in the sequence between the beginning and end word)
+        :return: the hash map containing all the intermediate words of each word as the keys and
+            all the words that share the intermediate word key as the values
+        """
+        # Time complexity <=> O(n * m * m), where n is the size of the array
+        # And m is the size of each string (each word has m substrings)
+        # Space complexity <=> O(n * m * m) (each word of size m will be put as a value in all m substrings)
+
+        # For each word in the array of words (the dictionary of words):
+        # Compute all intermediate words by putting a * instead of each letter of the current word
+        # Add the current word in the array of values for each intermediate word (the key)
+        hash_map = dict()
+
+        for word in word_list:
+            m = len(word)
+
+            for i in range(m):
+                intermediate_word = word[:i] + "*" + word[(i + 1):]
+
+                if hash_map.get(intermediate_word) is not None:
+                    hash_map[intermediate_word].append(word)
+                else:
+                    hash_map[intermediate_word] = [word]
+
+        return hash_map
+
+    def ladder_length1(self, begin_word, end_word, word_list):
+        """
+        :param begin_word: the string with which the shortest sequence starts (the beginning point)
+        :param end_word: the string with which the shortest sequence ends (the end point)
+        :param word_list: the array of strings representing the dictionary (the words that we can
+            use in the sequence between the beginning and end word)
+        :return: the length of the shortest sequence between the beginning and end word where each word
+            in the sequence is different from the previous and next word by just one character, if one
+            exists and 0, otherwise
+        """
         # Data structure <=> String, Array, Graph
         # Algorithm <=> BFS
 
@@ -25,7 +129,7 @@ class Solution(object):
         # We make the current node their predecessor and compute the distance from the beginning word node
         # To them using the distance from the beginning word node to the current node
 
-        # Time complexity <=> O(m * m * n + e), where m is the size of the word array,
+        # Time complexity <=> O(m * m * n + m + e), where m is the size of the word array,
         # n is the size of the words (they all have the same size)
         # And e is the number of edges in the graph (the number of words that differ by one letter only)
         # Space complexity <=> O((m + 1) * (m + 1))
