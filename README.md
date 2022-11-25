@@ -56,6 +56,8 @@ https://www.youtube.com/watch?v=GhQdlIFylQ8
 ## 7. .NET Core
 https://www.youtube.com/watch?v=eCbaZixsP-s
 
+https://www.youtube.com/watch?v=BfEjDD8mWYg
+
 
 ## 8. Machine Learning
 https://profs.info.uaic.ro/~ciortuz/ML.ex-book/editia-2021/ex-book.28sept2021.pdf
